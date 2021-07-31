@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# MUI Practice Project
+
+Clone this [site](https://minimal-kit-react.vercel.app/dashboard/app)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
