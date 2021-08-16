@@ -1,6 +1,21 @@
+import { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
-import Footer from "./Footer";
-import MainHeader from "./MainHeader";
+import {
+  AppBar,
+  Box,
+  IconButton,
+  styled,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+
+import { Menu } from "@material-ui/icons";
+import Header from "./headerSample";
+
+export const drawerWidth = 240;
+
+// import Footer from "./Footer";
+// import MainHeader from "./MainHeader";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -9,16 +24,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = (props) => {
+  // window width
+  const { window } = props;
+  const [toggleMenu, setToggleMenu] = useState(false);
   const classes = useStyles();
 
+  // toggle drawer
+  const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
+
+  // I don't know the work of container yet
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  console.log(window);
+  console.log(container);
+
   return (
-    <>
-      <MainHeader />
+    <Box sx={{ display: "flex" }}>
+      {/* App Bar */}
+      <Header onClick={handleToggleDrawer} />
 
-      <main className={classes.main}>{props.children}</main>
+      {/* Drawer */}
 
-      <Footer />
-    </>
+      {/* Content */}
+    </Box>
   );
 };
 
