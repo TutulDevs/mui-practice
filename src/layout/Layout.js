@@ -1,26 +1,22 @@
 import { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  styled,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { Box, styled, Toolbar } from "@material-ui/core";
 
-import { Menu } from "@material-ui/icons";
 import Header from "./headerSample";
-
-export const drawerWidth = 240;
-
-// import Footer from "./Footer";
+import SideDrawer from "./SideDrawer";
+//import Footer from "./Footer";
 // import MainHeader from "./MainHeader";
 
 const useStyles = makeStyles((theme) => ({
-  main: {
-    marginTop: theme.spacing(8),
+  drawerPaper: {
+    width: drawerWidth,
   },
+}));
+
+const MainStyle = styled("main")(({ theme }) => ({
+  flexGrow: 1,
+  minHeight: "100vh",
+  padding: theme.spacing(2.5),
 }));
 
 const Layout = (props) => {
@@ -31,13 +27,11 @@ const Layout = (props) => {
 
   // toggle drawer
   const handleToggleDrawer = () => setToggleMenu(!toggleMenu);
+  const handleToggleClose = () => setToggleMenu(false);
 
   // I don't know the work of container yet
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
-  console.log(window);
-  console.log(container);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -45,10 +39,23 @@ const Layout = (props) => {
       <Header onClick={handleToggleDrawer} />
 
       {/* Drawer */}
+      <SideDrawer
+        container={container}
+        toggleMenu={toggleMenu}
+        onClose={handleToggleClose}
+        drawerPaper={classes.drawerPaper}
+      />
 
       {/* Content */}
+      <MainStyle>
+        <Toolbar />
+        {/* Main parts */}
+        {props.children}
+      </MainStyle>
     </Box>
   );
 };
 
 export default Layout;
+
+export const drawerWidth = 240;
