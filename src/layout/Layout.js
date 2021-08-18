@@ -2,10 +2,9 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box, styled, Toolbar } from "@material-ui/core";
 
-import Header from "./headerSample";
+import MainHeader from "./MainHeader";
 import SideDrawer from "./SideDrawer";
 //import Footer from "./Footer";
-// import MainHeader from "./MainHeader";
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
@@ -36,7 +35,7 @@ const Layout = (props) => {
   return (
     <Box sx={{ display: "flex" }}>
       {/* App Bar */}
-      <Header onClick={handleToggleDrawer} />
+      <MainHeader onClick={handleToggleDrawer} />
 
       {/* Drawer */}
       <SideDrawer

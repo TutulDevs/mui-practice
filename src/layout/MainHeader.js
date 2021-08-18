@@ -1,120 +1,87 @@
 import { useState } from "react";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles } from "@material-ui/styles";
-import EN_Flag from "../images/ic_flag_en.svg";
-import DE_Flag from "../images/ic_flag_de.svg";
-import FR_Flag from "../images/ic_flag_fr.svg";
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    boxShadow: "none",
-    backdropFilter: "blur(6px)",
-    backgroundColor: "rgba(255, 255, 255, 0.72)",
-    color: "#333333",
-  },
-  toolbar: {
-    borderBottom: "2px solid blue",
-    display: "flex",
-    justifyContent: "space-between",
-    alignContent: "flex-start",
-    alignItems: "center",
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  searchIcon: {
-    margin: theme.spacing(1),
-    padding: theme.spacing(0.75),
-  },
-  buttonContainer: {},
-  menuItem: {
-    padding: "0.25rem 1.5rem",
-  },
-  menuImage: {
-    marginRight: theme.spacing(2),
+import { AppBar, Box, IconButton, styled, Toolbar } from "@material-ui/core";
+
+// icons
+import { RiMenu3Line } from "react-icons/ri";
+import { BiSearch } from "react-icons/bi";
+
+// components
+import LanguageSelector from "../components/MainHeader/SelectLanguage";
+
+import { drawerWidth } from "./Layout";
+
+const AppBarStyle = styled(AppBar)(({ theme }) => ({
+  boxShadow: "none",
+  backdropFilter: "blur(6px)",
+  backgroundColor: "rgba(255, 255, 255, 0.72)",
+  color: "#333333",
+  [theme.breakpoints.up("sm")]: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    flexShrink: 0,
   },
 }));
 
-const MainHeader = () => {
-  const classes = useStyles();
+const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
+  borderBottom: "2px solid red",
+  display: "flex",
+  justifyContent: "space-between",
+  alignContent: "flex-start",
+  alignItems: "center",
+}));
 
+const ContainerStyle = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gap: theme.spacing(0.5),
+  gridAutoFlow: "column",
+}));
+
+const ToggleButtonStyle = styled(IconButton)(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+}));
+
+const MainHeader = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (e) => setAnchorEl(e.currentTarget);
+
+  // open and close dropdown menu
+  const handleOpen = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <AppBar position='fixed' className={classes.header}>
-      <Toolbar className={classes.toolbar}>
-        <Box component='div'>
-          <IconButton aria-label='Open Menu' className={classes.searchIcon}>
-            <MenuIcon fontSize='small' />
+    <AppBarStyle position='fixed'>
+      <ToolbarStyle>
+        {/* Left side's items */}
+        <ContainerStyle>
+          <ToggleButtonStyle
+            color='inherit'
+            aria-label='open drawer'
+            edge='start'
+            onClick={props.onClick}>
+            <RiMenu3Line fontSize='small' />
+          </ToggleButtonStyle>
+
+          <IconButton aria-label='search'>
+            <BiSearch fontSize='small' />
           </IconButton>
+        </ContainerStyle>
 
-          <IconButton aria-label='Search' className={classes.searchIcon}>
-            <SearchIcon fontSize='small' />
-          </IconButton>
-        </Box>
+        {/* Right side's items */}
+        <ContainerStyle>
+          {/* Language selector */}
+          <LanguageSelector
+            anchorEl={anchorEl}
+            onOpen={handleOpen}
+            onClose={handleClose}
+          />
 
-        {/* Right side items */}
-        <Box component='div'>
-          <Box component='div'>
-            <IconButton
-              aria-controls='language-menu'
-              aria-haspopup='true'
-              onClick={handleClick}>
-              <img src={EN_Flag} alt='EN Flag' />
-            </IconButton>
+          {/* Notification */}
 
-            <Menu
-              id='language-menu'
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}>
-              <MenuItem className={classes.menuItem} onClick={handleClose}>
-                <img
-                  src={EN_Flag}
-                  alt='EN Flag'
-                  className={classes.menuImage}
-                />
-                <Typography variant='subtitle2' component='span'>
-                  English
-                </Typography>
-              </MenuItem>
-              <MenuItem className={classes.menuItem} onClick={handleClose}>
-                <img
-                  src={DE_Flag}
-                  alt='DE Flag'
-                  className={classes.menuImage}
-                />
-                <Typography variant='subtitle2' component='span'>
-                  German
-                </Typography>
-              </MenuItem>
-              <MenuItem className={classes.menuItem} onClick={handleClose}>
-                <img
-                  src={FR_Flag}
-                  alt='FR Flag'
-                  className={classes.menuImage}
-                />
-                <Typography variant='subtitle2' component='span'>
-                  French
-                </Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      </Toolbar>
-    </AppBar>
+          {/* User Avatar */}
+        </ContainerStyle>
+      </ToolbarStyle>
+    </AppBarStyle>
   );
 };
 
