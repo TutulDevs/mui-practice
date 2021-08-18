@@ -8,18 +8,20 @@ import {
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 
+import MenuArrow from "../UI/MenuArrow";
+
 // images
 import EN_Flag from "../../images/ic_flag_en.svg";
 import DE_Flag from "../../images/ic_flag_de.svg";
 import FR_Flag from "../../images/ic_flag_fr.svg";
 
 // Menu styles
-const StyledMenu = withStyles({
+const StyledMenu = withStyles((theme) => ({
   paper: {
     minWidth: 175,
-    boxShadow: "0 2px 15px -2px #272727",
+    boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,
   },
-})((props) => (
+}))((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
@@ -74,6 +76,8 @@ const LanguageSelector = (props) => {
         keepMounted
         open={Boolean(props.anchorEl)}
         onClose={props.onClose}>
+        <MenuArrow />
+
         {languages.map((el) => (
           <StyledMenuItem key={el.alt} onClick={props.onClose}>
             <img src={el.src} alt={el.alt} />
