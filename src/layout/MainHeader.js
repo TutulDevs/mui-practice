@@ -8,6 +8,7 @@ import { BiSearch } from "react-icons/bi";
 
 // components
 import LanguageSelector from "../components/MainHeader/SelectLanguage";
+import Notifications from "../components/MainHeader/Notifications";
 
 import { drawerWidth } from "./Layout";
 
@@ -43,11 +44,16 @@ const ToggleButtonStyle = styled(IconButton)(({ theme }) => ({
 }));
 
 const MainHeader = (props) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [showLang, setShowLang] = useState(null);
+  const [showNotification, setShowNotification] = useState(null);
 
-  // open and close dropdown menu
-  const handleOpen = (e) => setAnchorEl(e.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+  // open and close lang menu
+  const handleOpenLang = (e) => setShowLang(e.currentTarget);
+  const handleCloseLang = () => setShowLang(null);
+
+  // notifications
+  const handleOpenNotification = (e) => setShowNotification(e.currentTarget);
+  const handleCloseNotification = () => setShowNotification(null);
 
   return (
     <AppBarStyle position='fixed'>
@@ -71,12 +77,17 @@ const MainHeader = (props) => {
         <ContainerStyle>
           {/* Language selector */}
           <LanguageSelector
-            anchorEl={anchorEl}
-            onOpen={handleOpen}
-            onClose={handleClose}
+            anchorEl={showLang}
+            onOpen={handleOpenLang}
+            onClose={handleCloseLang}
           />
 
           {/* Notification */}
+          <Notifications
+            anchorEl={showNotification}
+            onOpen={handleOpenNotification}
+            onClose={handleCloseNotification}
+          />
 
           {/* User Avatar */}
         </ContainerStyle>

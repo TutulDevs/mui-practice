@@ -29,7 +29,10 @@ const StyledMenu = withStyles((theme) => ({
       vertical: "bottom",
       horizontal: "center",
     }}
-    transformOrigin={{ vertical: "top", horizontal: "center" }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
     {...props}
   />
 ));
@@ -62,7 +65,7 @@ const languages = [
 
 const LanguageSelector = (props) => {
   return (
-    <Box>
+    <>
       <IconButtonStyle
         aria-controls='language-selector'
         aria-haspopup='true'
@@ -86,7 +89,7 @@ const LanguageSelector = (props) => {
           </StyledMenuItem>
         ))}
       </StyledMenu>
-    </Box>
+    </>
   );
 };
 
