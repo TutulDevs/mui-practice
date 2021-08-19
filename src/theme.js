@@ -32,7 +32,7 @@ const theme = createTheme({
     },
     gray: {
       main: "rgb(99, 115, 129)",
-      light: "rgba(145, 158, 171, 0.08)",
+      light: "rgb(223 223 223)",
       lighter: "rgb(244, 246, 248)",
     },
     mixins: {

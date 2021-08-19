@@ -11,7 +11,8 @@ import {
 import { makeStyles, styled, withStyles } from "@material-ui/styles";
 
 // icons
-import { HiBell } from "react-icons/hi";
+import { HiBell, HiClock } from "react-icons/hi";
+import { FaEnvelopeOpen } from "react-icons/fa";
 
 // components
 import MenuArrow from "../UI/MenuArrow";
@@ -24,12 +25,24 @@ const useStyles = makeStyles((theme) => ({
   grayDark: {
     color: theme.palette.gray.dark,
   },
+  listHeader: {
+    color: theme.palette.gray.main,
+    margin: "8px 0",
+    paddingLeft: theme.spacing(2),
+    letterSpacing: 1,
+    fontSize: theme.spacing(2),
+    fontWeight: 600,
+  },
 }));
 
 const StyledMenu = withStyles((theme) => ({
   paper: {
     minWidth: 250,
+    maxWidth: 400,
     boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,
+  },
+  "& ul": {
+    padding: 0,
   },
 }))((props) => (
   <Menu
@@ -59,11 +72,97 @@ const LinkStyle = styled(Link)(({ theme }) => ({
   fontSize: theme.spacing(2),
   fontWeight: 500,
   borderRadius: theme.spacing(0.75),
+  transition: "background 0.25s ease-in",
   "&:hover": {
     backgroundColor: theme.palette.green.light,
     underline: "none",
   },
 }));
+
+const MenuItemUnseenStyle = styled(MenuItem)(({ theme }) => ({
+  backgroundColor: theme.palette.gray.lighter,
+  padding: "16px 12px 16px 8px",
+  display: "flex",
+  alignItems: "center",
+  whiteSpace: "break-spaces",
+  "&:hover": {
+    backgroundColor: theme.palette.gray.light,
+  },
+}));
+
+const MenuItemSeenStyle = styled(MenuItem)(() => ({
+  padding: "16px 12px 16px 8px",
+  display: "flex",
+  alignItems: "center",
+  whiteSpace: "break-spaces",
+}));
+
+const MenuItemIconButtonStyle = styled(IconButton)(({ theme }) => ({
+  marginRight: theme.spacing(2),
+  backgroundColor: theme.palette.gray.lighter,
+  color: `#${Math.random().toString(16).substr(-6)}`,
+}));
+
+const MenuItemTimeStampStyle = styled(Typography)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  fontSize: theme.spacing(1.85),
+  color: theme.palette.gray.main,
+  margin: 0,
+  marginTop: theme.spacing(0.5),
+  "& span": {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+// List of notification
+const notificationList = [
+  {
+    id: "n1",
+    status: "unseen",
+    avatar: <FaEnvelopeOpen fontSize='small' />,
+    mainText: "Your order is placed",
+    subText: "waiting for shipping",
+    time: "about 12 hours",
+  },
+  {
+    id: "n2",
+    status: "seen",
+    avatar: <FaEnvelopeOpen fontSize='small' />,
+    mainText: "You have new message",
+    subText: "5 unread messages",
+    time: "1 day",
+  },
+  {
+    id: "n3",
+    status: "unseen",
+    avatar: <FaEnvelopeOpen fontSize='small' />,
+    mainText: "Miss Veronica Walter",
+    subText: "answered to your comment on the minimal",
+    time: "about 4 hours",
+  },
+  {
+    id: "n4",
+    status: "seen",
+    avatar: <FaEnvelopeOpen fontSize='small' />,
+    mainText: "You have new mail",
+    subText: "sent from guido padberg",
+    time: "2 day",
+  },
+  {
+    id: "n5",
+    status: "seen",
+    avatar: <FaEnvelopeOpen fontSize='small' />,
+    mainText: "Delivery processing",
+    subText: "your order is being shipped",
+    time: "3 day",
+  },
+];
+
+const seenNotifications = notificationList.filter((el) => el.status === "seen");
+const unSeenNotifications = notificationList.filter(
+  (el) => el.status === "unseen"
+);
 
 const Notifications = (props) => {
   const classes = useStyles();
@@ -92,15 +191,65 @@ const Notifications = (props) => {
           </Typography>
           <Typography
             variant='body2'
-            component='paragraph'
+            component='p'
             className={classes.grayMain}>
-            You have {0} unread messages
+            You have {unSeenNotifications.length} unread messages
           </Typography>
         </BoxStyle>
 
         <Divider />
 
-        <MenuItem>List of Data</MenuItem>
+        {/* Unseen Notifications */}
+        <Typography
+          variant='button'
+          component='h4'
+          className={classes.listHeader}>
+          NEW
+        </Typography>
+
+        {unSeenNotifications.map((el) => (
+          <MenuItemUnseenStyle key={el.id}>
+            <MenuItemIconButtonStyle>{el.avatar}</MenuItemIconButtonStyle>
+
+            <Box>
+              <Typography variant='body2' component='p'>
+                <strong>{el.mainText}</strong>{" "}
+                <span className={classes.grayMain}>{el.subText}</span>
+              </Typography>
+
+              <MenuItemTimeStampStyle variant='caption' component='p'>
+                <HiClock fontSize='small' />
+                <span>{el.time}</span>
+              </MenuItemTimeStampStyle>
+            </Box>
+          </MenuItemUnseenStyle>
+        ))}
+
+        {/* Seen Notifications */}
+        <Typography
+          variant='button'
+          component='h4'
+          className={classes.listHeader}>
+          BEFORE THAT
+        </Typography>
+
+        {seenNotifications.map((el) => (
+          <MenuItemSeenStyle key={el.id}>
+            <MenuItemIconButtonStyle>{el.avatar}</MenuItemIconButtonStyle>
+
+            <Box>
+              <Typography variant='body2' component='p'>
+                <strong>{el.mainText}</strong>{" "}
+                <span className={classes.grayMain}>{el.subText}</span>
+              </Typography>
+
+              <MenuItemTimeStampStyle variant='caption' component='p'>
+                <HiClock fontSize='small' />
+                <span>{el.time}</span>
+              </MenuItemTimeStampStyle>
+            </Box>
+          </MenuItemSeenStyle>
+        ))}
 
         <Divider />
 
