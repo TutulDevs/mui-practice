@@ -12,7 +12,10 @@ import { makeStyles, styled, withStyles } from "@material-ui/styles";
 
 // icons
 import { HiBell, HiClock } from "react-icons/hi";
-import { FaEnvelopeOpen } from "react-icons/fa";
+import { FaUser, FaTruck } from "react-icons/fa";
+import { BsFillChatDotsFill } from "react-icons/bs";
+import { IoMailOpenSharp } from "react-icons/io5";
+import { FiBox } from "react-icons/fi";
 
 // styles
 const useStyles = makeStyles((theme) => ({
@@ -124,7 +127,7 @@ const notificationList = [
   {
     id: "n1",
     status: "unseen",
-    avatar: <FaEnvelopeOpen fontSize='small' />,
+    avatar: <FiBox fontSize='small' />,
     mainText: "Your order is placed",
     subText: "waiting for shipping",
     time: "about 12 hours",
@@ -132,7 +135,7 @@ const notificationList = [
   {
     id: "n2",
     status: "seen",
-    avatar: <FaEnvelopeOpen fontSize='small' />,
+    avatar: <BsFillChatDotsFill fontSize='small' />,
     mainText: "You have new message",
     subText: "5 unread messages",
     time: "1 day",
@@ -140,7 +143,7 @@ const notificationList = [
   {
     id: "n3",
     status: "unseen",
-    avatar: <FaEnvelopeOpen fontSize='small' />,
+    avatar: <FaUser fontSize='small' />,
     mainText: "Miss Veronica Walter",
     subText: "answered to your comment on the minimal",
     time: "about 4 hours",
@@ -148,18 +151,18 @@ const notificationList = [
   {
     id: "n4",
     status: "seen",
-    avatar: <FaEnvelopeOpen fontSize='small' />,
+    avatar: <IoMailOpenSharp fontSize='small' />,
     mainText: "You have new mail",
     subText: "sent from guido padberg",
-    time: "2 day",
+    time: "2 days",
   },
   {
     id: "n5",
     status: "seen",
-    avatar: <FaEnvelopeOpen fontSize='small' />,
+    avatar: <FaTruck fontSize='small' />,
     mainText: "Delivery processing",
     subText: "your order is being shipped",
-    time: "3 day",
+    time: "3 days",
   },
 ];
 
