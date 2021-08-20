@@ -25,7 +25,6 @@ const AppBarStyle = styled(AppBar)(({ theme }) => ({
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
-  borderBottom: "2px solid red",
   display: "flex",
   justifyContent: "space-between",
   alignContent: "flex-start",
