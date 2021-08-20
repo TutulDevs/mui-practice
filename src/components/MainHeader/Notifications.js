@@ -1,4 +1,3 @@
-// icons
 import {
   Badge,
   Box,
@@ -37,6 +36,7 @@ const StyledMenu = withStyles((theme) => ({
   paper: {
     minWidth: 250,
     maxWidth: 400,
+    width: "90%",
     boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,
   },
 }))((props) => (
@@ -45,11 +45,11 @@ const StyledMenu = withStyles((theme) => ({
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: "bottom",
-      horizontal: "center",
+      horizontal: "right",
     }}
     transformOrigin={{
       vertical: "top",
-      horizontal: "center",
+      horizontal: "right",
     }}
     {...props}
   />

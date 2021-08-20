@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { AppBar, Box, IconButton, styled, Toolbar } from "@material-ui/core";
 
+import { drawerWidth } from "./Layout";
+
 // icons
 import { RiMenu3Line } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
@@ -9,8 +11,7 @@ import { BiSearch } from "react-icons/bi";
 // components
 import LanguageSelector from "../components/MainHeader/SelectLanguage";
 import Notifications from "../components/MainHeader/Notifications";
-
-import { drawerWidth } from "./Layout";
+import UserMenu from "../components/MainHeader/UserMenu";
 
 const AppBarStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: "none",
@@ -46,6 +47,7 @@ const ToggleButtonStyle = styled(IconButton)(({ theme }) => ({
 const MainHeader = (props) => {
   const [showLang, setShowLang] = useState(null);
   const [showNotification, setShowNotification] = useState(null);
+  const [showUserMenu, setShowUserMenu] = useState(null);
 
   // open and close lang menu
   const handleOpenLang = (e) => setShowLang(e.currentTarget);
@@ -54,6 +56,10 @@ const MainHeader = (props) => {
   // notifications
   const handleOpenNotification = (e) => setShowNotification(e.currentTarget);
   const handleCloseNotification = () => setShowNotification(null);
+
+  // User Menu
+  const handleOpenUserMenu = (e) => setShowUserMenu(e.currentTarget);
+  const handleCloseUserMenu = () => setShowUserMenu(null);
 
   return (
     <AppBarStyle position='fixed'>
@@ -90,6 +96,11 @@ const MainHeader = (props) => {
           />
 
           {/* User Avatar */}
+          <UserMenu
+            anchorEl={showUserMenu}
+            onOpen={handleOpenUserMenu}
+            onClose={handleCloseUserMenu}
+          />
         </ContainerStyle>
       </ToolbarStyle>
     </AppBarStyle>
