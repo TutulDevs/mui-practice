@@ -1,5 +1,6 @@
 // icons
 import {
+  Badge,
   Box,
   Divider,
   IconButton,
@@ -13,9 +14,6 @@ import { makeStyles, styled, withStyles } from "@material-ui/styles";
 // icons
 import { HiBell, HiClock } from "react-icons/hi";
 import { FaEnvelopeOpen } from "react-icons/fa";
-
-// components
-import MenuArrow from "../UI/MenuArrow";
 
 // styles
 const useStyles = makeStyles((theme) => ({
@@ -41,9 +39,6 @@ const StyledMenu = withStyles((theme) => ({
     maxWidth: 400,
     boxShadow: `0 2px 10px -5px ${theme.palette.green.darker}`,
   },
-  "& ul": {
-    padding: 0,
-  },
 }))((props) => (
   <Menu
     elevation={0}
@@ -59,6 +54,15 @@ const StyledMenu = withStyles((theme) => ({
     {...props}
   />
 ));
+
+const BadgeStyle = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: theme.palette.red.main,
+    color: theme.palette.common.white,
+    top: "-3px",
+    fontSize: theme.spacing(1.75),
+  },
+}));
 
 const BoxStyle = styled(Box)(({ theme }) => ({
   padding: "10px 16px",
@@ -163,6 +167,7 @@ const seenNotifications = notificationList.filter((el) => el.status === "seen");
 const unSeenNotifications = notificationList.filter(
   (el) => el.status === "unseen"
 );
+const totalUnseenNotifications = unSeenNotifications.length;
 
 const Notifications = (props) => {
   const classes = useStyles();
@@ -173,7 +178,9 @@ const Notifications = (props) => {
         aria-controls='notifications'
         aria-haspopup='true'
         onClick={props.onOpen}>
-        <HiBell fontSize='small' />
+        <BadgeStyle badgeContent={totalUnseenNotifications}>
+          <HiBell fontSize='small' />
+        </BadgeStyle>
       </IconButton>
 
       <StyledMenu
@@ -182,8 +189,6 @@ const Notifications = (props) => {
         keepMounted
         open={Boolean(props.anchorEl)}
         onClose={props.onClose}>
-        <MenuArrow />
-
         {/* Header */}
         <BoxStyle>
           <Typography variant='h6' component='h3'>
@@ -193,7 +198,7 @@ const Notifications = (props) => {
             variant='body2'
             component='p'
             className={classes.grayMain}>
-            You have {unSeenNotifications.length} unread messages
+            You have {totalUnseenNotifications} unread messages
           </Typography>
         </BoxStyle>
 

@@ -35,6 +35,9 @@ const theme = createTheme({
       light: "rgb(223 223 223)",
       lighter: "rgb(244, 246, 248)",
     },
+    red: {
+      main: "rgb(255, 72, 66)",
+    },
     mixins: {
       toolbar: {
         minHeight: 64,
