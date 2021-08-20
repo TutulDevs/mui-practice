@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Hidden,
   styled,
@@ -7,9 +8,14 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
+  Avatar,
 } from "@material-ui/core";
 
+// icons & images
+import userAvatar from "../images/avatar_default.jpg";
 import { Inbox, Mail } from "@material-ui/icons";
+
 import { drawerWidth } from "./Layout";
 
 const NavDrawerStyle = styled("nav")(({ theme }) => ({
@@ -19,11 +25,45 @@ const NavDrawerStyle = styled("nav")(({ theme }) => ({
   },
 }));
 
+const LogoStyle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.green.darker,
+  margin: 0,
+}));
+
+const UserCardStyle = styled(Link)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  color: "inherit",
+  backgroundColor: theme.palette.gray.light,
+  margin: "12px",
+  padding: "14px 12px",
+  borderRadius: theme.spacing(1.5),
+  textDecoration: "none",
+  "& .MuiTypography-root": {
+    marginLeft: theme.spacing(1.5),
+  },
+}));
+
 const SideDrawer = (props) => {
   const drawerContent = (
-    <div>
-      <Toolbar>Logo</Toolbar>
+    <>
+      {/* Logo */}
+      <Toolbar>
+        <LogoStyle variant='h6' component='h2'>
+          MUI Dash
+        </LogoStyle>
+      </Toolbar>
 
+      {/* User Card */}
+      <UserCardStyle to='/' onClick={props.onClose}>
+        <Avatar src={userAvatar} alt='User Image' />
+
+        <Typography variant='subtitle1' component='h3'>
+          Jaydon Frankie
+        </Typography>
+      </UserCardStyle>
+
+      {/* List of links */}
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text} onClick={props.onClose}>
@@ -34,7 +74,9 @@ const SideDrawer = (props) => {
           </ListItem>
         ))}
       </List>
-    </div>
+
+      {/* get more card */}
+    </>
   );
 
   return (
