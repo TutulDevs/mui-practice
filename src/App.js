@@ -10,19 +10,19 @@ const App = () => {
     <>
       <Layout>
         <Switch>
-          <Route path='/' exact>
-            <Redirect to='/dashboard' />
+          <Route path="/" exact>
+            <Redirect to="/dashboard" />
           </Route>
 
-          <Route path='/dashboard' component={Dashboard} exact />
-          <Route path='/user' />
-          <Route path='/product' />
-          <Route path='/blog' />
-          <Route path='/login' />
-          <Route path='/register' />
-          <Route path='/404' component={ErrorPage} />
+          <Route path="/dashboard" component={Dashboard} exact />
+          <Route path="/user" />
+          <Route path="/product" />
+          <Route path="/blog" />
+          <Route path="/login" />
+          <Route path="/register" />
+          <Route path="/404" component={ErrorPage} />
 
-          <Route path='*' component={ErrorPage} />
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </Layout>
     </>
