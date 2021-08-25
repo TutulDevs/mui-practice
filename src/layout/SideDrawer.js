@@ -7,10 +7,12 @@ import {
   List,
   Typography,
   Avatar,
+  Box,
 } from "@material-ui/core";
 
 // icons & images
 import userAvatar from "../images/avatar_default.jpg";
+import getMoreAvatar from "../images/illustration_avatar.png";
 import { ImPieChart } from "react-icons/im";
 import { FaUserFriends, FaUserPlus } from "react-icons/fa";
 import { GiHazardSign } from "react-icons/gi";
@@ -52,6 +54,47 @@ const UserCardStyle = styled(Link)(({ theme }) => ({
 const ListStyle = styled(List)(({ theme }) => ({
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(6),
+}));
+
+const GetMoreStyle = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.gray.light,
+  margin: "150px 12px 16px 12px",
+  padding: "60px 12px 14px 12px",
+  borderRadius: theme.spacing(1.5),
+  textAlign: "center",
+  position: "relative",
+
+  "& img": {
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    width: theme.spacing(12.5),
+    transform: "translate(-40%, -40%)",
+    transition: "all 0.3s ease-in",
+  },
+  "& h5": {
+    margin: "10px 0",
+  },
+  "& a": {
+    textDecoration: "none",
+    fontWeight: 500,
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.green.darker,
+    display: "block",
+    padding: "6px",
+    borderRadius: "inherit",
+    transition: "background 0.3s ease-in",
+    boxShadow: "0px 5px 5px white",
+    "&:hover": {
+      backgroundColor: theme.palette.green.dark,
+    },
+  },
+
+  "&:hover": {
+    "& img": {
+      transform: "translate(-40%, -50%)",
+    },
+  },
 }));
 
 // links for the side nav
@@ -108,6 +151,25 @@ const SideDrawer = (props) => {
       </ListStyle>
 
       {/* get more card */}
+      <GetMoreStyle>
+        <img src={getMoreAvatar} alt="avatar" />
+
+        <Typography variant="h6" component="h4">
+          Get more?
+        </Typography>
+
+        <Typography variant="body2" component="h5">
+          From only $69
+        </Typography>
+
+        <a
+          href="https://material-ui.com/store/items/minimal-dashboard/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Upgrade To Pro
+        </a>
+      </GetMoreStyle>
     </>
   );
 
