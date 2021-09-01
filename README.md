@@ -1,6 +1,10 @@
-# MUI Practice Project
+# MUI Dash
 
-Clone this [site](https://minimal-kit-react.vercel.app/dashboard/app)
+Hi there!
+
+I'm currently cloning [this dashboard](https://minimal-kit-react.vercel.app/dashboard/app) to practice my skills in Material UI with Reactjs.
+
+**Feel free to give any feedback or suggestion. Thanks**
 
 ## Getting Started with Create React App
 
