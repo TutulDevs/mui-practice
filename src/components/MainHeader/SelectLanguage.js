@@ -64,18 +64,20 @@ const LanguageSelector = (props) => {
   return (
     <>
       <IconButtonStyle
-        aria-controls='language-selector'
-        aria-haspopup='true'
-        onClick={props.onOpen}>
-        <img src={EN_Flag} alt='English' />
+        aria-controls="language-selector"
+        aria-haspopup="true"
+        onClick={props.onOpen}
+      >
+        <img src={EN_Flag} alt="English" />
       </IconButtonStyle>
 
       <StyledMenu
-        id='customized menu'
+        id="customized menu"
         anchorEl={props.anchorEl}
         keepMounted
         open={Boolean(props.anchorEl)}
-        onClose={props.onClose}>
+        onClose={props.onClose}
+      >
         {languages.map((el) => (
           <StyledMenuItem key={el.alt} onClick={props.onClose}>
             <img src={el.src} alt={el.alt} />

@@ -127,7 +127,7 @@ const notificationList = [
   {
     id: "n1",
     status: "unseen",
-    avatar: <FiBox fontSize='small' />,
+    avatar: <FiBox fontSize="small" />,
     mainText: "Your order is placed",
     subText: "waiting for shipping",
     time: "about 12 hours",
@@ -135,7 +135,7 @@ const notificationList = [
   {
     id: "n2",
     status: "seen",
-    avatar: <BsFillChatDotsFill fontSize='small' />,
+    avatar: <BsFillChatDotsFill fontSize="small" />,
     mainText: "You have new message",
     subText: "5 unread messages",
     time: "1 day",
@@ -143,7 +143,7 @@ const notificationList = [
   {
     id: "n3",
     status: "unseen",
-    avatar: <FaUser fontSize='small' />,
+    avatar: <FaUser fontSize="small" />,
     mainText: "Miss Veronica Walter",
     subText: "answered to your comment on the minimal",
     time: "about 4 hours",
@@ -151,7 +151,7 @@ const notificationList = [
   {
     id: "n4",
     status: "seen",
-    avatar: <IoMailOpenSharp fontSize='small' />,
+    avatar: <IoMailOpenSharp fontSize="small" />,
     mainText: "You have new mail",
     subText: "sent from guido padberg",
     time: "2 days",
@@ -159,7 +159,7 @@ const notificationList = [
   {
     id: "n5",
     status: "seen",
-    avatar: <FaTruck fontSize='small' />,
+    avatar: <FaTruck fontSize="small" />,
     mainText: "Delivery processing",
     subText: "your order is being shipped",
     time: "3 days",
@@ -178,29 +178,32 @@ const Notifications = (props) => {
   return (
     <>
       <IconButton
-        aria-controls='notifications'
-        aria-haspopup='true'
-        onClick={props.onOpen}>
+        aria-controls="notifications"
+        aria-haspopup="true"
+        onClick={props.onOpen}
+      >
         <BadgeStyle badgeContent={totalUnseenNotifications}>
-          <HiBell fontSize='small' />
+          <HiBell fontSize="small" />
         </BadgeStyle>
       </IconButton>
 
       <StyledMenu
-        id='notificationsMenu'
+        id="notificationsMenu"
         anchorEl={props.anchorEl}
         keepMounted
         open={Boolean(props.anchorEl)}
-        onClose={props.onClose}>
+        onClose={props.onClose}
+      >
         {/* Header */}
         <BoxStyle>
-          <Typography variant='h6' component='h3'>
+          <Typography variant="h6" component="h3">
             Notifications
           </Typography>
           <Typography
-            variant='body2'
-            component='p'
-            className={classes.grayMain}>
+            variant="body2"
+            component="p"
+            className={classes.grayMain}
+          >
             You have {totalUnseenNotifications} unread messages
           </Typography>
         </BoxStyle>
@@ -209,9 +212,10 @@ const Notifications = (props) => {
 
         {/* Unseen Notifications */}
         <Typography
-          variant='button'
-          component='h4'
-          className={classes.listHeader}>
+          variant="button"
+          component="h4"
+          className={classes.listHeader}
+        >
           NEW
         </Typography>
 
@@ -220,13 +224,13 @@ const Notifications = (props) => {
             <MenuItemIconButtonStyle>{el.avatar}</MenuItemIconButtonStyle>
 
             <Box>
-              <Typography variant='body2' component='p'>
+              <Typography variant="body2" component="p">
                 <strong>{el.mainText}</strong>{" "}
                 <span className={classes.grayMain}>{el.subText}</span>
               </Typography>
 
-              <MenuItemTimeStampStyle variant='caption' component='p'>
-                <HiClock fontSize='small' />
+              <MenuItemTimeStampStyle variant="caption" component="p">
+                <HiClock fontSize="small" />
                 <span>{el.time}</span>
               </MenuItemTimeStampStyle>
             </Box>
@@ -235,9 +239,10 @@ const Notifications = (props) => {
 
         {/* Seen Notifications */}
         <Typography
-          variant='button'
-          component='h4'
-          className={classes.listHeader}>
+          variant="button"
+          component="h4"
+          className={classes.listHeader}
+        >
           BEFORE THAT
         </Typography>
 
@@ -246,13 +251,13 @@ const Notifications = (props) => {
             <MenuItemIconButtonStyle>{el.avatar}</MenuItemIconButtonStyle>
 
             <Box>
-              <Typography variant='body2' component='p'>
+              <Typography variant="body2" component="p">
                 <strong>{el.mainText}</strong>{" "}
                 <span className={classes.grayMain}>{el.subText}</span>
               </Typography>
 
-              <MenuItemTimeStampStyle variant='caption' component='p'>
-                <HiClock fontSize='small' />
+              <MenuItemTimeStampStyle variant="caption" component="p">
+                <HiClock fontSize="small" />
                 <span>{el.time}</span>
               </MenuItemTimeStampStyle>
             </Box>
@@ -263,7 +268,7 @@ const Notifications = (props) => {
 
         {/* Footer */}
         <BoxStyle>
-          <LinkStyle href='/' underline='none'>
+          <LinkStyle href="/" underline="none">
             View All
           </LinkStyle>
         </BoxStyle>

@@ -113,29 +113,32 @@ const UserMenu = (props) => {
   return (
     <>
       <AvatarButtonStyle
-        aria-controls='notifications'
-        aria-haspopup='true'
-        onClick={props.onOpen}>
-        <Avatar src={userAvatar} alt='User Name'>
+        aria-controls="notifications"
+        aria-haspopup="true"
+        onClick={props.onOpen}
+      >
+        <Avatar src={userAvatar} alt="User Name">
           JD
         </Avatar>
       </AvatarButtonStyle>
 
       <StyledMenu
-        id='notificationsMenu'
+        id="notificationsMenu"
         anchorEl={props.anchorEl}
         keepMounted
         open={Boolean(props.anchorEl)}
-        onClose={props.onClose}>
+        onClose={props.onClose}
+      >
         {/* Header */}
         <BoxStyle>
-          <Typography variant='h6' component='h3'>
+          <Typography variant="h6" component="h3">
             Jaydon Frankie
           </Typography>
           <Typography
-            variant='body2'
-            component='p'
-            className={classes.grayMain}>
+            variant="body2"
+            component="p"
+            className={classes.grayMain}
+          >
             demo@minimal.cc
           </Typography>
         </BoxStyle>
@@ -147,14 +150,14 @@ const UserMenu = (props) => {
           <MenuItemStyle key={el.id}>
             <a href={el.path}>
               {el.icon}
-              <Box component='span'>{el.title}</Box>
+              <Box component="span">{el.title}</Box>
             </a>
           </MenuItemStyle>
         ))}
 
         {/* Footer */}
         <BoxStyle>
-          <LinkStyle href='/' underline='none'>
+          <LinkStyle href="/" underline="none">
             Logout
           </LinkStyle>
         </BoxStyle>
