@@ -2,8 +2,8 @@ import { Box, styled, Typography } from "@material-ui/core";
 
 const InfoCard = ({ colorId, icon, amount, title }) => {
   const CardStyle = styled(Box)(({ theme }) => ({
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(6),
     borderRadius: theme.spacing(1.5),
     textAlign: "center",
     display: "flex",
@@ -19,6 +19,10 @@ const InfoCard = ({ colorId, icon, amount, title }) => {
         : colorId === "maroon"
         ? theme.palette.maroon.light
         : "salmon",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: theme.spacing(2.5),
+      paddingBottom: theme.spacing(2.5),
+    },
   }));
 
   const IconStyle = styled(Box)(({ theme }) => ({
