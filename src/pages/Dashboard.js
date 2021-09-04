@@ -1,6 +1,7 @@
 import { Grid, Link, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import ChartSiteVisits from "../components/Dashboard/ChartSiteVisits";
+import ConversionRate from "../components/Dashboard/ConversionRate";
 import CurrentVisits from "../components/Dashboard/CurrentVisits";
 import InfoCards from "../components/Dashboard/InfoCards";
 
@@ -36,6 +37,11 @@ const Dashboard = () => {
         {/* Current Visits */}
         <Grid item xs={12} md={6} lg={4}>
           <CurrentVisits />
+        </Grid>
+
+        {/* Conversion Rates */}
+        <Grid item xs={12} md={6} lg={8}>
+          <ConversionRate />
         </Grid>
       </GridContainerStyle>
     </>
