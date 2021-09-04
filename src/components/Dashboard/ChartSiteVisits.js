@@ -1,6 +1,7 @@
-import { useTheme } from "@material-ui/styles";
-import { Card } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Chart from "react-apexcharts";
+import DashCard from "./DashCard";
+import DashCardHeader from "./DashCardHeader";
 
 // chart data series
 const SERIES = [
@@ -22,8 +23,6 @@ const SERIES = [
 ];
 
 const ChartSiteVisits = () => {
-  const theme = useTheme();
-
   const options = {
     chart: {
       id: "basic-bar",
@@ -35,7 +34,7 @@ const ChartSiteVisits = () => {
     plotOptions: {
       bar: {
         columnWidth: "15%",
-        borderRadius: 6,
+        borderRadius: 4,
       },
     },
     stroke: { curve: "smooth", width: [0, 2, 3] },
@@ -86,9 +85,16 @@ const ChartSiteVisits = () => {
   };
 
   return (
-    <Card>
-      <Chart options={options} series={SERIES} type="line" />
-    </Card>
+    <DashCard>
+      <DashCardHeader
+        title="Website Visits"
+        subheader="(+43%) than last year"
+      />
+
+      <Box sx={{ p: 3, pb: 1 }}>
+        <Chart options={options} series={SERIES} type="line" />
+      </Box>
+    </DashCard>
   );
 };
 
