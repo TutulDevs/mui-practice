@@ -1,6 +1,7 @@
 import { Grid, Link, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import ChartSiteVisits from "../components/Dashboard/ChartSiteVisits";
+import CurrentVisits from "../components/Dashboard/CurrentVisits";
 import InfoCards from "../components/Dashboard/InfoCards";
 
 // grid container style
@@ -30,6 +31,11 @@ const Dashboard = () => {
         {/* Site visits chart */}
         <Grid item xs={12} md={6} lg={8}>
           <ChartSiteVisits />
+        </Grid>
+
+        {/* Current Visits */}
+        <Grid item xs={12} md={6} lg={4}>
+          <CurrentVisits />
         </Grid>
       </GridContainerStyle>
     </>

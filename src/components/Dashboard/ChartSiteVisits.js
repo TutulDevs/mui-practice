@@ -2,6 +2,7 @@ import { Box } from "@material-ui/core";
 import Chart from "react-apexcharts";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
+import DashCardBox from "./DashCardBox";
 
 // chart data series
 const SERIES = [
@@ -91,9 +92,9 @@ const ChartSiteVisits = () => {
         subheader="(+43%) than last year"
       />
 
-      <Box sx={{ p: 3, pb: 1 }}>
+      <DashCardBox>
         <Chart options={options} series={SERIES} type="line" />
-      </Box>
+      </DashCardBox>
     </DashCard>
   );
 };
