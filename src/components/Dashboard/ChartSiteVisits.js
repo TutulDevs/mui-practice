@@ -1,4 +1,3 @@
-import { Box } from "@material-ui/core";
 import Chart from "react-apexcharts";
 import DashCard from "./DashCard";
 import DashCardHeader from "./DashCardHeader";
@@ -93,7 +92,7 @@ const ChartSiteVisits = () => {
       />
 
       <DashCardBox>
-        <Chart options={options} series={SERIES} type="line" />
+        <Chart options={options} series={SERIES} type="line" height={300} />
       </DashCardBox>
     </DashCard>
   );

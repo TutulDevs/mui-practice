@@ -57,7 +57,7 @@ const CurrentVisits = () => {
           type="pie"
           series={SERIES_DATA}
           options={chartOptions}
-          height={300}
+          height={350}
         />
       </DivStyle>
     </DashCard>
