@@ -14,7 +14,7 @@ const theme = createTheme({
       light: "rgb(200, 250, 205)",
       lighter: "rgba(0, 171, 85, 0.08)",
       dark: "rgb(0, 123, 85)",
-      darker: "rgb(0 171 85)",
+      darker: "rgb(0, 171, 85)",
     },
     blue: {
       main: "rgb(4, 41, 122)",
@@ -33,7 +33,7 @@ const theme = createTheme({
     },
     gray: {
       main: "rgb(99, 115, 129)",
-      light: "rgb(223 223 223)",
+      light: "rgb(223, 223, 223)",
       lighter: "rgb(244, 246, 248)",
     },
     red: {
