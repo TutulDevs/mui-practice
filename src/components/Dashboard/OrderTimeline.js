@@ -10,6 +10,9 @@ const TimelineStyle = styled(Timeline)(({ theme }) => ({
   "& .MuiTimelineItem-missingOppositeContent:before": {
     display: "none",
   },
+  "& .MuiTimelineContent-root": {
+    paddingTop: 3,
+  },
 }));
 
 // timeline list
