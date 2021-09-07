@@ -6,6 +6,7 @@ import ConversionRate from "../components/Dashboard/ConversionRate";
 import CurrentVisits from "../components/Dashboard/CurrentVisits";
 import InfoCards from "../components/Dashboard/InfoCards";
 import NewsUpdate from "../components/Dashboard/NewsUpdate";
+import OrderTimeline from "../components/Dashboard/OrderTimeline";
 
 // grid container style
 const GridContainerStyle = styled(Grid)(({ theme }) => ({
@@ -54,6 +55,11 @@ const Dashboard = () => {
         {/* News Update */}
         <Grid item xs={12} md={6} lg={8}>
           <NewsUpdate />
+        </Grid>
+
+        {/* Order Timeline */}
+        <Grid item xs={12} md={6} lg={4}>
+          <OrderTimeline />
         </Grid>
       </GridContainerStyle>
     </>
