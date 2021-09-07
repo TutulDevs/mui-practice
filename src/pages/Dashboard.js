@@ -7,6 +7,7 @@ import CurrentVisits from "../components/Dashboard/CurrentVisits";
 import InfoCards from "../components/Dashboard/InfoCards";
 import NewsUpdate from "../components/Dashboard/NewsUpdate";
 import OrderTimeline from "../components/Dashboard/OrderTimeline";
+import SocialTraffic from "../components/Dashboard/SocialTraffic";
 
 // grid container style
 const GridContainerStyle = styled(Grid)(({ theme }) => ({
@@ -60,6 +61,11 @@ const Dashboard = () => {
         {/* Order Timeline */}
         <Grid item xs={12} md={6} lg={4}>
           <OrderTimeline />
+        </Grid>
+
+        {/* Traffic by Site */}
+        <Grid item xs={12} md={6} lg={4}>
+          <SocialTraffic />
         </Grid>
       </GridContainerStyle>
     </>
