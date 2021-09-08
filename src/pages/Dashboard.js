@@ -8,6 +8,7 @@ import InfoCards from "../components/Dashboard/InfoCards";
 import NewsUpdate from "../components/Dashboard/NewsUpdate";
 import OrderTimeline from "../components/Dashboard/OrderTimeline";
 import SocialTraffic from "../components/Dashboard/SocialTraffic";
+import Tasks from "../components/Dashboard/Tasks";
 
 // grid container style
 const GridContainerStyle = styled(Grid)(({ theme }) => ({
@@ -66,6 +67,11 @@ const Dashboard = () => {
         {/* Traffic by Site */}
         <Grid item xs={12} md={6} lg={4}>
           <SocialTraffic />
+        </Grid>
+
+        {/* Traffic by Site */}
+        <Grid item xs={12} md={6} lg={8}>
+          <Tasks />
         </Grid>
       </GridContainerStyle>
     </>
