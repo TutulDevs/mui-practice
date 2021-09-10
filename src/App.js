@@ -5,6 +5,7 @@ import "./App.css";
 // components
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/404";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
           <Route path="/user" />
           <Route path="/product" />
           <Route path="/blog" />
-          <Route path="/login" />
+          <Route path="/login" component={Login} />
           <Route path="/register" />
           <Route path="/404" component={ErrorPage} />
 
