@@ -3,6 +3,7 @@ import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import { Link as RouterLink } from "react-router-dom";
 import AuthButtonGroup from "../components/AuthPages/ButtonGroup";
+import FormLogin from "../components/AuthPages/FormLogin";
 import LeftPanel from "../components/AuthPages/LeftPanel";
 import SectionDivider from "../components/AuthPages/SectionDivider";
 
@@ -79,6 +80,7 @@ const Login = () => {
           <SectionDivider />
 
           {/* The Actual Form 👇 */}
+          <FormLogin />
         </Box>
       </RightPanelStyle>
     </ContainerGridStyle>
