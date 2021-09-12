@@ -6,6 +6,7 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/404";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/product" />
           <Route path="/blog" />
           <Route path="/login" component={Login} />
-          <Route path="/register" />
+          <Route path="/register" component={Register} />
           <Route path="/404" component={ErrorPage} />
 
           <Route path="*" component={ErrorPage} />

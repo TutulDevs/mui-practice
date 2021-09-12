@@ -3,12 +3,12 @@ import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import { Link as RouterLink } from "react-router-dom";
 import AuthButtonGroup from "../components/AuthPages/ButtonGroup";
-import FormLogin from "../components/AuthPages/FormLogin";
+import FormRegister from "../components/AuthPages/FormRegister";
 import LeftPanel from "../components/AuthPages/LeftPanel";
 import SectionDivider from "../components/AuthPages/SectionDivider";
 
 // img
-import LoginPhoto from "../images/auth/login.png";
+import RegisterPhoto from "../images/auth/register.png";
 
 // styles
 const ContainerBoxStyle = styled(Box)(({ theme }) => ({
@@ -49,29 +49,45 @@ const RightPanelStyle = styled(Box)(({ theme }) => ({
       margin: "8px 0 20px 0",
     },
   },
+
+  "& .terms": {
+    display: "block",
+    marginTop: "24px !important",
+    fontSize: 12,
+    textAlign: "justify",
+
+    "& a": {
+      textDecorationColor: theme.palette.success.light,
+      "&:hover": {
+        textDecorationColor: theme.palette.common.black,
+      },
+    },
+  },
 }));
 
-const Login = () => {
+const Register = () => {
+  const preventDefault = (e) => e.preventDefault();
+
   return (
     <ContainerBoxStyle container>
       <LeftPanel
-        title="Hi, Welcome Back"
-        img={LoginPhoto}
-        imgAlt="Login Image"
+        title="Manage the job more effectively with Minimal"
+        img={RegisterPhoto}
+        imgAlt="Register Image"
       />
 
       <RightPanelStyle>
         <Typography paragraph className="account_switch">
-          Don't have an account?{" "}
-          <Link to="/register" component={RouterLink} underline="none">
-            Get started
+          Already have an account?{" "}
+          <Link to="/login" component={RouterLink} underline="none">
+            Login
           </Link>
         </Typography>
 
         <Container maxWidth="xs" className="form_Container">
-          <Typography variant="h4">Sign in to MUI Dash</Typography>
+          <Typography variant="h4">Get started absolutely free.</Typography>
           <Typography paragraph color="textSecondary">
-            Enter your details below.
+            Free forever. No credit card needed.
           </Typography>
 
           {/* Buttons */}
@@ -81,11 +97,34 @@ const Login = () => {
           <SectionDivider />
 
           {/* The Actual Form 👇 */}
-          <FormLogin />
+          <FormRegister />
+
+          {/* Terms */}
+          <Typography paragraph color="textSecondary" className="terms">
+            By registering, I agree to MUI Dash{" "}
+            <Link
+              href="#"
+              onClick={preventDefault}
+              underline="always"
+              color="textPrimary"
+            >
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="#"
+              onClick={preventDefault}
+              underline="always"
+              color="textPrimary"
+            >
+              Privacy Policy
+            </Link>
+            .
+          </Typography>
         </Container>
       </RightPanelStyle>
     </ContainerBoxStyle>
   );
 };
 
-export default Login;
+export default Register;
