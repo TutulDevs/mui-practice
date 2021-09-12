@@ -1,4 +1,4 @@
-import { Grid, Typography, Link } from "@material-ui/core";
+import { Typography, Link, Container } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import { Link as RouterLink } from "react-router-dom";
@@ -11,18 +11,24 @@ import SectionDivider from "../components/AuthPages/SectionDivider";
 import LoginPhoto from "../images/auth/login.png";
 
 // styles
-const ContainerGridStyle = styled(Grid)(({ theme }) => ({
-  //border: "1px solid salmon",
+const ContainerBoxStyle = styled(Box)(({ theme }) => ({
   minHeight: `calc(100vh - ${theme.mixins.toolbar.minHeight * 2}px)`,
+  display: "grid",
+  gap: theme.spacing(3),
+  gridTemplateColumns: `350px 1fr`,
+
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: `1fr`,
+  },
 }));
 
-const RightPanelStyle = styled(Grid)(({ theme }) => ({
+const RightPanelStyle = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
 
   "& .account_switch": {
     textAlign: "right",
+    paddingRight: theme.spacing(3),
     "& .MuiLink-underlineNone	": {
       color: theme.palette.green.darker,
       fontWeight: 500,
@@ -51,15 +57,14 @@ const RightPanelStyle = styled(Grid)(({ theme }) => ({
 
 const Login = () => {
   return (
-    <ContainerGridStyle container>
+    <ContainerBoxStyle container>
       <LeftPanel
-        gridSize={5}
         title="Hi, Welcome Back"
         img={LoginPhoto}
         imgAlt="Login Image"
       />
 
-      <RightPanelStyle item xs={12} md={7}>
+      <RightPanelStyle>
         <Typography paragraph className="account_switch">
           Don't have an account?{" "}
           <Link to="/register" component={RouterLink} underline="none">
@@ -67,7 +72,7 @@ const Login = () => {
           </Link>
         </Typography>
 
-        <Box className="form_Container">
+        <Container maxWidth="xs" className="form_Container">
           <Typography variant="h4">Sign in to MUI Dash</Typography>
           <Typography paragraph color="textSecondary">
             Enter your details below.
@@ -81,9 +86,9 @@ const Login = () => {
 
           {/* The Actual Form 👇 */}
           <FormLogin />
-        </Box>
+        </Container>
       </RightPanelStyle>
-    </ContainerGridStyle>
+    </ContainerBoxStyle>
   );
 };
 

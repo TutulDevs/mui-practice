@@ -59,8 +59,10 @@ const FormStyle = styled("form")(({ theme }) => ({
 
 const FormLogin = () => {
   const [showPassword, setShowPassord] = useState(false);
+  const [remember, setRemember] = useState(true);
 
   const handleTogglePassword = () => setShowPassord(!showPassword);
+  const handleToggleRemember = () => setRemember(!remember);
 
   // prevent Default
   const preventDefault = (e) => e.preventDefault();
@@ -97,7 +99,12 @@ const FormLogin = () => {
           alignItems: "center",
         }}
       >
-        <FormControlLabel control={<Checkbox />} label="Remember me" />
+        <FormControlLabel
+          control={
+            <Checkbox checked={remember} onChange={handleToggleRemember} />
+          }
+          label="Remember me"
+        />
 
         <Link href="#" onClick={preventDefault} underline="always">
           Forgot password?

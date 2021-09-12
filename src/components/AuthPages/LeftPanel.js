@@ -1,9 +1,9 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 
 // styles
-const LeftPaneStyle = styled(Grid)(({ theme }) => ({
+const LeftPaneStyle = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -29,9 +29,9 @@ const LeftPaneStyle = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const LeftPanel = ({ gridSize, title, img, imgAlt }) => {
+const LeftPanel = ({ title, img, imgAlt }) => {
   return (
-    <LeftPaneStyle item md={gridSize}>
+    <LeftPaneStyle>
       <Typography variant="h3">{title}</Typography>
 
       <Box component="img" src={img} alt={imgAlt} loading="lazy" />
