@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   Button,
   Checkbox,
@@ -9,16 +11,16 @@ import {
 import { styled } from "@material-ui/styles";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 
 // style
 const FormStyle = styled("form")(({ theme }) => ({
-  // border: "1px solid",
+  // root style
   marginTop: theme.spacing(2),
   display: "grid",
   gap: theme.spacing(3),
 
+  // input style
   "& label.Mui-focused": {
     color: theme.palette.success.main,
   },
@@ -31,10 +33,25 @@ const FormStyle = styled("form")(({ theme }) => ({
     },
   },
 
-  "& .MuiIconButton-label": {
+  // error
+  "& .Mui-error.MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: theme.palette.error.light,
+    },
+  },
+  "& label.Mui-error.Mui-focused": {
+    color: theme.palette.error.light,
+  },
+
+  // checkbox style
+  "& .MuiCheckbox-root": {
+    color: theme.palette.success.light,
+  },
+  "& .Mui-checked": {
     color: theme.palette.success.main,
   },
 
+  // forgot link style
   "& a": {
     color: theme.palette.success.main,
     fontWeight: 500,
@@ -43,6 +60,7 @@ const FormStyle = styled("form")(({ theme }) => ({
     },
   },
 
+  // button style
   "& .MuiButton-contained": {
     backgroundColor: theme.palette.success.main,
     color: theme.palette.common.white,
@@ -64,18 +82,45 @@ const FormLogin = () => {
   const handleTogglePassword = () => setShowPassord(!showPassword);
   const handleToggleRemember = () => setRemember(!remember);
 
+  // hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberUser: true,
+    },
+  });
+
   // prevent Default
   const preventDefault = (e) => e.preventDefault();
 
+  // form submit
+  const onSubmit = (data) => {
+    console.table(data);
+    alert(JSON.stringify(data));
+  };
+
+  // for reset
+  // couldn't make it work
+
   return (
-    <FormStyle component="form" noValidate>
+    <FormStyle component="form" onSubmit={handleSubmit(onSubmit)}>
+      {/* Email */}
       <TextField
         variant="outlined"
         fullWidth
         type="email"
         label="Email address"
+        error={errors.email ? true : false}
+        helperText={errors.email && "Enter a valid email address"}
+        {...register("email", { required: true })}
       />
 
+      {/* Password */}
       <TextField
         variant="outlined"
         fullWidth
@@ -90,6 +135,15 @@ const FormLogin = () => {
           ),
         }}
         label="Password"
+        error={errors.password ? true : false}
+        helperText={
+          errors.password && "Enter a valid password (5-15 characters)"
+        }
+        {...register("password", {
+          required: true,
+          minLength: 5,
+          maxLength: 15,
+        })}
       />
 
       <Box
@@ -99,11 +153,17 @@ const FormLogin = () => {
           alignItems: "center",
         }}
       >
+        {/* Checkbox */}
         <FormControlLabel
           control={
-            <Checkbox checked={remember} onChange={handleToggleRemember} />
+            <Checkbox
+              className="ckbox"
+              checked={remember}
+              onChange={handleToggleRemember}
+            />
           }
           label="Remember me"
+          {...register("rememberUser")}
         />
 
         <Link href="#" onClick={preventDefault} underline="always">
@@ -111,7 +171,7 @@ const FormLogin = () => {
         </Link>
       </Box>
 
-      <Button variant="contained" disableElevation>
+      <Button type="submit" variant="contained" disableElevation>
         Login
       </Button>
     </FormStyle>
