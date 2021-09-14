@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/404";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Blog from "./pages/Blog";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/user" />
           <Route path="/product" />
-          <Route path="/blog" />
+          <Route path="/blog" component={Blog} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/404" component={ErrorPage} />
