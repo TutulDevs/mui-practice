@@ -1,21 +1,13 @@
-import {
-  FormControl,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@material-ui/core";
+import { useState } from "react";
+import { InputAdornment, MenuItem, TextField } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Autocomplete } from "@mui/material";
 import { Box } from "@mui/system";
-
 import { FiSearch } from "react-icons/fi";
 
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   // root
-  //border: "1px solid salmon",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -30,8 +22,8 @@ const BoxStyle = styled(Box)(({ theme }) => ({
   // textfield
   "& .searchField": {
     "& .MuiInputBase-root": {
-      paddingTop: 5,
-      paddingBottom: 5,
+      paddingTop: 1,
+      paddingBottom: 1,
       paddingLeft: 10,
     },
     "& .MuiAutocomplete-hasPopupIcon": {
@@ -40,6 +32,28 @@ const BoxStyle = styled(Box)(({ theme }) => ({
     "& .MuiOutlinedInput-notchedOutline": {
       border: `1px solid ${theme.palette.text.secondary}`,
       borderRadius: theme.spacing(1),
+    },
+  },
+
+  // select
+  "& .selectFilter": {
+    "& .MuiOutlinedInput-input": {
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 12,
+    },
+    "& .MuiMenu-paper": {
+      marginTop: "50px !important",
+    },
+
+    "& .MuiOutlinedInput-notchedOutline": {
+      border: `1px solid ${theme.palette.text.secondary}`,
+      borderRadius: theme.spacing(1),
+    },
+
+    // menu item
+    "& .MuiMenuItem-root": {
+      color: "pink",
     },
   },
 }));
@@ -53,7 +67,17 @@ const top100Films = [
   { title: "12 Angry Men", year: 1957 },
 ];
 
+// filter
+const filterItems = [
+  { id: "el1", type: "Latest" },
+  { id: "el2", type: "Popular" },
+  { id: "el3", type: "Oldest" },
+];
+
 const BlogFilters = () => {
+  const [filterType, setFilterType] = useState("Latest");
+  const handleFilterTypeChange = (e) => setFilterType(e.target.value);
+
   return (
     <BoxStyle>
       {/* auto complete */}
@@ -80,14 +104,21 @@ const BlogFilters = () => {
         )}
       />
 
-      {/* select filter */}
-      <FormControl variant="outlined">
-        <Select id="selectFilter" value="age">
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+      {/* select with text field */}
+      <TextField
+        variant="outlined"
+        id="selectTextField"
+        className="selectFilter"
+        select
+        value={filterType}
+        onChange={handleFilterTypeChange}
+      >
+        {filterItems.map((el) => (
+          <MenuItem key={el.id} value={el.type}>
+            {el.type}
+          </MenuItem>
+        ))}
+      </TextField>
     </BoxStyle>
   );
 };
