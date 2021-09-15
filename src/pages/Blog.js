@@ -4,6 +4,7 @@ import { styled } from "@material-ui/styles";
 // components
 import BlogHeader from "../components/Blog/BlogHeader";
 import BlogFilters from "../components/Blog/BlogFilters";
+import Blogs from "../components/Blog/Blogs";
 
 // style
 const ContainerStyle = styled(Container)(({ theme }) => ({
@@ -19,6 +20,9 @@ const Blog = () => {
 
       {/* Blog Filters */}
       <BlogFilters />
+
+      {/* All blogs */}
+      <Blogs />
     </ContainerStyle>
   );
 };
