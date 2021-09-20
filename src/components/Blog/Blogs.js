@@ -3,6 +3,7 @@ import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import BlogSocialInfo from "./BlogSocialInfo";
 
+// styles
 const GridContainerStyle = styled(Grid)(({ theme }) => ({
   // border: "1px solid",
   marginTop: theme.spacing(4),
@@ -58,7 +59,72 @@ const GridItemStyle = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const avatarSrc = `https://i.pravatar.cc/100`;
+const NewBoxStyle = styled(Box)(({ theme }) => ({
+  border: `1px solid ${theme.palette.gray.light}`,
+  borderRadius: theme.spacing(1.5),
+  minHeight: 350,
+  margin: 0,
+  position: "relative",
+  transition: "all 0.3s ease-in-out",
+  boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px`,
+
+  display: "grid",
+  gridTemplateRows: `200px auto`,
+
+  "&:hover": {
+    transition: "all 0.3s ease-in-out",
+    boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 4px 8px -2px`,
+  },
+
+  "& .imgContainer": {
+    position: "relative",
+    "&::before": {
+      content: `""`,
+      display: "block",
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      backgroundColor: "rgba(0,0,0,0.45)",
+      borderRadius: "inherit",
+    },
+  },
+
+  "& .textContainer": {
+    padding: `0 ${theme.spacing(3)}px ${theme.spacing(3)}px`,
+
+    display: "grid",
+    gap: theme.spacing(2),
+
+    "& .MuiAvatar-root": {
+      backgroundColor: theme.palette.common.white,
+      padding: 10,
+      width: 50,
+      height: 50,
+      transform: `translateY(-50%)`,
+
+      "& img": {
+        borderRadius: "50%",
+        width: 40,
+        height: 40,
+      },
+    },
+
+    "& .dateTime": {
+      marginTop: "-15px",
+      color: theme.palette.text.disabled,
+    },
+
+    "& .linkTitle": {
+      "& a": {
+        fontSize: 20,
+        color: "inherit",
+        display: "block",
+      },
+    },
+  },
+}));
 
 // list of the items/blogs
 const blogList = [
@@ -68,35 +134,30 @@ const blogList = [
       "Tesla Cybertruck-inspired camper trailer for Tesla fans who can’t just wait for the truck!",
     path: "#",
     social: { comment: "76.46k", views: "90.58k", share: "77.89k" },
-    authorImg: avatarSrc,
   },
   {
     dateTime: "05 November 2020",
     title: "title_02",
     path: "#",
     social: { comment: "76.46k", views: "90.58k", share: "77.89k" },
-    authorImg: avatarSrc,
   },
   {
     dateTime: "01 February 2020",
     title: "title_03",
     path: "#",
     social: { comment: "76.46k", views: "90.58k", share: "77.89k" },
-    authorImg: avatarSrc,
   },
   {
     dateTime: "03 February 2020",
     title: "title_04",
     path: "#",
     social: { comment: "76.46k", views: "90.58k", share: "77.89k" },
-    authorImg: avatarSrc,
   },
   {
     dateTime: "05 February 2020",
     title: "title_05",
     path: "#",
     social: { comment: "76.46k", views: "90.58k", share: "77.89k" },
-    authorImg: avatarSrc,
   },
 ];
 
@@ -179,21 +240,35 @@ const Blogs = () => {
       {/* Rest of the Array data  */}
       {restOfTheArr.map((el, idx) => (
         <GridItemStyle key={el.dateTime} item xs={12} md={6} lg={3}>
-          <Box
-            className="boxContainer"
-            sx={{
-              backgroundImage: `url('https://source.unsplash.com/random/601x40${idx}')`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-          >
-            <Avatar src={`https://i.pravatar.cc/11${idx}`} alt={el.title} />
+          <NewBoxStyle>
+            <Box
+              className="imgContainer"
+              sx={{
+                backgroundImage: `url('https://source.unsplash.com/random/601x40${idx}')`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                borderRadius: `12px 12px 0 0`,
+              }}
+            />
 
             <Box className="textContainer">
-              <Box>
-                <Typography variant="caption">{el.dateTime}</Typography>
+              <Box
+                sx={{
+                  display: "grid",
+                  gap: 1,
+                }}
+              >
+                <Avatar
+                  variant="circular"
+                  src={`https://i.pravatar.cc/11${idx}`}
+                  alt={el.title}
+                />
 
-                <Typography variant="h5">
+                <Typography className="dateTime" variant="caption">
+                  {el.dateTime}
+                </Typography>
+
+                <Typography className="linkTitle" variant="h5">
                   <Link href={el.path} underline="hover">
                     {el.title}
                   </Link>
@@ -205,9 +280,10 @@ const Blogs = () => {
                 comments={el.social.comment}
                 views={el.social.views}
                 shares={el.social.share}
+                color="rgb(145, 158, 171)"
               />
             </Box>
-          </Box>
+          </NewBoxStyle>
         </GridItemStyle>
       ))}
       {/* end of rest of the array data */}
