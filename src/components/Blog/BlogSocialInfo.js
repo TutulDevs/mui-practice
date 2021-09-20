@@ -6,7 +6,10 @@ import { FaCommentDots, FaEye, FaShare } from "react-icons/fa";
 
 const BlogSocialInfo = ({ comments, views, shares }) => {
   return (
-    <Typography variant="caption" style={{ color: "#f8f8f8" }}>
+    <Typography
+      variant="caption"
+      style={{ color: "#f8f8f8", textAlign: "right" }}
+    >
       <Box component="span" sx={{ px: 0.5 }}>
         <FaCommentDots /> {comments}
       </Box>
