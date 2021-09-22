@@ -5,6 +5,9 @@ import { Autocomplete } from "@mui/material";
 import { Box } from "@mui/system";
 import { FiSearch } from "react-icons/fi";
 
+// blogs
+import { blogList } from "../../api/blogApi";
+
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
   // root
@@ -58,15 +61,6 @@ const BoxStyle = styled(Box)(({ theme }) => ({
   },
 }));
 
-// data for options
-const top100Films = [
-  { title: "The Shawshank Redemption", year: 1994 },
-  { title: "The Godfather", year: 1972 },
-  { title: "The Godfather: Part II", year: 1974 },
-  { title: "The Dark Knight", year: 2008 },
-  { title: "12 Angry Men", year: 1957 },
-];
-
 // filter
 const filterItems = [
   { id: "el1", type: "Latest" },
@@ -83,7 +77,7 @@ const BlogFilters = () => {
       {/* auto complete */}
       <Autocomplete
         id="combo"
-        options={top100Films}
+        options={blogList}
         getOptionLabel={(item) => item.title}
         style={{ width: 220 }}
         renderInput={(params) => (
