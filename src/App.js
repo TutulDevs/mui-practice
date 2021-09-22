@@ -8,6 +8,7 @@ import ErrorPage from "./pages/404";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Blog from "./pages/Blog";
+import Products from "./pages/Products";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
 
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/user" />
-          <Route path="/product" />
+          <Route path="/product" component={Products} />
           <Route path="/blog" component={Blog} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
