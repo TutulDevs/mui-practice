@@ -3,6 +3,7 @@ import { styled } from "@material-ui/styles";
 
 // components
 import FixedCartCounter from "../components/Product/FixedCartCount";
+import ProductActionBar from "../components/Product/ProductActionBar";
 
 // style
 const ContainerStyle = styled(Container)(({ theme }) => ({
@@ -29,6 +30,11 @@ const Products = () => {
         <Typography variant="h3" className="productHeader">
           Products
         </Typography>
+
+        {/* Action bar */}
+        <ProductActionBar />
+
+        {/* Products list */}
       </ContainerStyle>
     </>
   );
