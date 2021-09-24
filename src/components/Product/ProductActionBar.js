@@ -9,6 +9,7 @@ import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { BiFilter } from "react-icons/bi";
+import DrawerContent from "./DrawerContent";
 
 const ButtonStyle = styled(Button)(({ theme }) => ({
   fontWeight: 500,
@@ -51,9 +52,8 @@ const TextFieldStyle = styled(TextField)(({ theme }) => ({
 }));
 
 const ProductActionBar = () => {
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(true);
   const toggleDrawer = () => setShowDrawer(!showDrawer);
-  console.log(showDrawer);
 
   return (
     <Box
@@ -79,11 +79,7 @@ const ProductActionBar = () => {
         open={showDrawer}
         onClose={toggleDrawer}
       >
-        <Box sx={{ width: 300 }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-          assumenda modi corporis molestias facilis voluptas deserunt saepe
-          ipsam ducimus eaque.
-        </Box>
+        <DrawerContent closeDrawer={toggleDrawer} />
       </Drawer>
 
       {/* Sorter */}
