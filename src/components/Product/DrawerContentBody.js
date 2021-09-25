@@ -10,6 +10,8 @@ import {
 import { styled } from "@material-ui/styles";
 import { Rating } from "@mui/material";
 import DrawerContentCard from "./DrawerContentCard";
+import { RiCheckboxBlankCircleFill, RiCheckLine } from "react-icons/ri";
+import { Box } from "@mui/system";
 
 // style
 const ButtonStyle = styled(Button)(({ theme }) => ({
@@ -33,6 +35,18 @@ const PRICE_SORT = [
   { val: "below25", title: "Below $25" },
   { val: "25to75", title: "Between $25-$75" },
   { val: "above75", title: "Above $75" },
+];
+
+// colors
+const COLORS_TO_PICK = [
+  "#00AB55",
+  "#000000",
+  "#FFFFFF",
+  "#FFC0CB",
+  "#FF4842",
+  "#1890FF",
+  "#94D82D",
+  "#FFC107",
 ];
 
 const DrawerContentBody = () => {
@@ -72,6 +86,43 @@ const DrawerContentBody = () => {
       </DrawerContentCard>
 
       {/* Colors later */}
+      <DrawerContentCard title="Colour">
+        <Box
+          sx={{
+            display: "grid",
+            gap: "4px 16px",
+            gridTemplateColumns: "repeat(3, 32px)",
+          }}
+        >
+          {COLORS_TO_PICK.map((el, idx) => (
+            <Box
+              key={el + idx}
+              sx={{
+                width: 24,
+                height: 24,
+                border: el === "#FFFFFF" ? "1px solid #eee" : "0",
+                borderRadius: "50%",
+                margin: 1,
+                backgroundColor: el,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Checkbox
+                aria-label={`color: ${el}`}
+                icon={<RiCheckboxBlankCircleFill style={{ color: el }} />}
+                checkedIcon={
+                  <RiCheckLine
+                    fontSize="small"
+                    style={{ color: el === "#FFFFFF" ? "black" : "white" }}
+                  />
+                }
+              />
+            </Box>
+          ))}
+        </Box>
+      </DrawerContentCard>
 
       {/* Price */}
       <DrawerContentCard title="Price">
