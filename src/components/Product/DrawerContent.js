@@ -28,7 +28,6 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 
 // content
 const ContentBoxStyle = styled(Box)(({ theme }) => ({
-  //backgroundColor: "#f7f7f7",
   padding: "8px 20px",
   overflowY: "auto",
 
@@ -38,6 +37,9 @@ const ContentBoxStyle = styled(Box)(({ theme }) => ({
   },
   "& .Mui-checked": {
     color: theme.palette.success.main,
+  },
+  "& .MuiIconButton-colorSecondary:hover": {
+    backgroundColor: theme.palette.green.lighter,
   },
 }));
 

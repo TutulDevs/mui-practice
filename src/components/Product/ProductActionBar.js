@@ -52,7 +52,7 @@ const TextFieldStyle = styled(TextField)(({ theme }) => ({
 }));
 
 const ProductActionBar = () => {
-  const [showDrawer, setShowDrawer] = useState(true);
+  const [showDrawer, setShowDrawer] = useState(false);
   const toggleDrawer = () => setShowDrawer(!showDrawer);
 
   return (
