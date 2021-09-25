@@ -4,6 +4,7 @@ import { styled } from "@material-ui/styles";
 // components
 import FixedCartCounter from "../components/Product/FixedCartCount";
 import ProductActionBar from "../components/Product/ProductActionBar";
+import ProductList from "../components/Product/ProductList";
 
 // style
 const ContainerStyle = styled(Container)(({ theme }) => ({
@@ -35,6 +36,7 @@ const Products = () => {
         <ProductActionBar />
 
         {/* Products list */}
+        <ProductList />
       </ContainerStyle>
     </>
   );
