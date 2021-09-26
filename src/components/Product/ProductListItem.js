@@ -1,9 +1,11 @@
-import { Card } from "@material-ui/core";
+import { Card, Link, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
+import { Link as RouteLink } from "react-router-dom";
+import ProductPrice from "./ProductPrice";
 
 const ProductListItem = (props) => {
-  const { id, title, price, priceSale, productImage, status, colors } =
+  const { title, price, priceSale, productImage, status, colors } =
     props.product;
 
   // label style
@@ -38,6 +40,30 @@ const ProductListItem = (props) => {
           src={productImage}
           alt={title}
         />
+      </Box>
+
+      {/* bottom of the card */}
+      <Box sx={{ padding: 2 }}>
+        <Link component={RouteLink} to="/" underline="hover" color="inherit">
+          <Typography variant="subtitle1" noWrap>
+            {title}
+          </Typography>
+        </Link>
+
+        {/* Price & Color box */}
+        <Box
+          sx={{
+            // border: "1px solid #eee",
+            mt: 1,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span>Colors</span>
+
+          <ProductPrice price={price} priceSale={priceSale} />
+        </Box>
       </Box>
     </Card>
   );
