@@ -12,7 +12,7 @@ const ProductList = () => {
   return (
     <GridStyle container spacing={3}>
       {products.map((product) => (
-        <Grid key={product.id} item xs={12} sm={6} md={3}>
+        <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
           <ProductListItem key={product.id} product={product} />
         </Grid>
       ))}

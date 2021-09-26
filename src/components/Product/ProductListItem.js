@@ -2,7 +2,14 @@ import { Card, Link, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
 import { Link as RouteLink } from "react-router-dom";
+import ProductColorPreview from "./ProductColorPreview";
 import ProductPrice from "./ProductPrice";
+
+// card style
+const CardStyle = styled(Card)(({ theme }) => ({
+  borderRadius: theme.spacing(2),
+  boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px`,
+}));
 
 const ProductListItem = (props) => {
   const { title, price, priceSale, productImage, status, colors } =
@@ -24,7 +31,8 @@ const ProductListItem = (props) => {
   }));
 
   return (
-    <Card>
+    <CardStyle>
+      {/* Image with Label */}
       <Box sx={{ pt: "100%", position: "relative" }}>
         {status && <LabelStyle>{status}</LabelStyle>}
 
@@ -43,7 +51,7 @@ const ProductListItem = (props) => {
       </Box>
 
       {/* bottom of the card */}
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ py: 2.5, px: 3 }}>
         <Link component={RouteLink} to="/" underline="hover" color="inherit">
           <Typography variant="subtitle1" noWrap>
             {title}
@@ -53,19 +61,18 @@ const ProductListItem = (props) => {
         {/* Price & Color box */}
         <Box
           sx={{
-            // border: "1px solid #eee",
-            mt: 1,
+            mt: 2,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <span>Colors</span>
+          <ProductColorPreview colors={colors} limit={3} />
 
           <ProductPrice price={price} priceSale={priceSale} />
         </Box>
       </Box>
-    </Card>
+    </CardStyle>
   );
 };
 
