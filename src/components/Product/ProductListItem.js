@@ -8,7 +8,12 @@ import ProductPrice from "./ProductPrice";
 // card style
 const CardStyle = styled(Card)(({ theme }) => ({
   borderRadius: theme.spacing(2),
-  boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px`,
+
+  boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 4px 8px -4px`,
+
+  "&:hover": {
+    boxShadow: `rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px`,
+  },
 }));
 
 const ProductListItem = (props) => {

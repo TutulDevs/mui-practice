@@ -4,6 +4,7 @@ import { HiShoppingCart } from "react-icons/hi";
 
 // style
 const ButtonStyle = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.common.white,
   padding: "14px 0px 8px 0px",
   border: `1px solid ${theme.palette.gray.light}`,
   borderRight: 0,
@@ -14,6 +15,7 @@ const ButtonStyle = styled(Button)(({ theme }) => ({
   position: "fixed",
   right: 0,
   top: `${theme.mixins.toolbar.minHeight * 2}px`,
+  zIndex: 999,
 
   "&:hover": {
     boxShadow: "none",
