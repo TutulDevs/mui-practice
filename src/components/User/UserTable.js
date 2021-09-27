@@ -1,7 +1,17 @@
 import { TableContainer, Table } from "@material-ui/core";
+import { styled } from "@material-ui/styles";
 import { useState } from "react";
 import { rows } from "../../api/userApi";
 import TableToolbar from "./TableToolbar";
+import UserTableHead from "./UserTableHead";
+
+// style
+const TableStyle = styled(Table)(({ theme }) => ({
+  border: "1px solid",
+  minWidth: 500,
+
+  overflowX: "auto",
+}));
 
 const UserTable = () => {
   // states
@@ -73,7 +83,19 @@ const UserTable = () => {
 
       {/* Table */}
       <TableContainer>
-        <Table>Table</Table>
+        <TableStyle>
+          {/* Table Head */}
+          <UserTableHead
+            numSelected={selectedItems.length}
+            order={order}
+            orderBy={orderBy}
+            onSelectAllClick={handleSelectAllClick}
+            onRequestSort={handleRequestSort}
+            rowCount={rows.length}
+          />
+
+          {/* Table Body */}
+        </TableStyle>
       </TableContainer>
     </>
   );

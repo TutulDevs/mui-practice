@@ -13,7 +13,7 @@ const User = () => {
       <Box
         sx={{
           width: "100%",
-          border: "1px solid",
+          //border: "1px solid",
           borderRadius: 2,
         }}
       >
