@@ -1,4 +1,11 @@
-import { TableContainer, Table } from "@material-ui/core";
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+  Checkbox,
+} from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { useState } from "react";
 import { rows } from "../../api/userApi";
@@ -7,11 +14,37 @@ import UserTableHead from "./UserTableHead";
 
 // style
 const TableStyle = styled(Table)(({ theme }) => ({
-  border: "1px solid",
+  // border: "1px solid",
   minWidth: 500,
 
   overflowX: "auto",
 }));
+
+////////////////////////////////////////////////
+const descendingComparator = (a, b, orderBy) => {
+  if (b[orderBy] < a[orderBy]) return -1;
+  if (b[orderBy] > a[orderBy]) return 1;
+  return 0;
+};
+
+const getComparator = (order, orderBy) => {
+  return order === "desc"
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+};
+
+const sortableArr = (arr, comparator) => {
+  const stabilizedThis = arr.map((el, idx) => [el, idx]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) {
+      return order;
+    }
+    return a[1] - b[1];
+  });
+
+  return stabilizedThis.map((el) => el[0]);
+};
 
 const UserTable = () => {
   // states
@@ -95,8 +128,53 @@ const UserTable = () => {
           />
 
           {/* Table Body */}
+          <TableBody>
+            {sortableArr(rows, getComparator(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, idx) => {
+                const isItemSelected = isSelected(row.name);
+                const labelId = `enhanced-table-checkbox-${idx}`;
+
+                return (
+                  <TableRow
+                    key={row.name}
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    aria-checked={isItemSelected}
+                    selected={isItemSelected}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        color="primary"
+                        checked={isItemSelected}
+                        inputProps={{ "aria-labelledby": labelId }}
+                        onClick={(e) => handleClick(e, row.name)}
+                      />
+                    </TableCell>
+
+                    <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      padding="none"
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.calories}</TableCell>
+                    <TableCell align="right">{row.fat}</TableCell>
+                    <TableCell align="right">{row.carbs}</TableCell>
+                    <TableCell align="right">{row.protein}</TableCell>
+                  </TableRow>
+                );
+              })}
+
+            {/* empty rows can be added below */}
+          </TableBody>
         </TableStyle>
       </TableContainer>
+
+      {/* Table Pagination */}
     </>
   );
 };
