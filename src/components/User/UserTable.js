@@ -5,6 +5,7 @@ import {
   TableRow,
   TableCell,
   Checkbox,
+  TablePagination,
 } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { useState } from "react";
@@ -106,8 +107,7 @@ const UserTable = () => {
   const isSelected = (name) => selectedItems.indexOf(name) !== -1;
 
   // find if there's any empty rows
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  //  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <>
@@ -175,6 +175,15 @@ const UserTable = () => {
       </TableContainer>
 
       {/* Table Pagination */}
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   );
 };
