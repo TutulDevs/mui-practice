@@ -1,25 +1,55 @@
-function createData(name, calories, fat, carbs, protein) {
+function createData(name, company, role, verified, status) {
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    company,
+    role,
+    verified,
+    status,
   };
 }
 
-export const rows = [
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
-  createData("Lollipop", 392, 0.2, 98, 0.0),
-  createData("Marshmallow", 318, 0, 81, 2.0),
-  createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0),
+// helper const
+const [yes, no, banned, active] = ["Yes", "No", "Banned", "Active"];
+const [uxd, uud, fsd, bd, pm, fed] = [
+  "UX Designer",
+  "UI/UX Designer",
+  "Full Stack Designer",
+  "Backend Developer",
+  "Project Manager",
+  "Front End Developer",
+];
+
+export const userData = [
+  createData("Herman Reilly", "Mitchell-Predovic", pm, yes, banned),
+  createData("Isabel Rolfson", "McKenzie-Smith", fsd, no, banned),
+  createData("Katie Lehner", "Stehr Inc", fed, yes, active),
+  createData("Kelly Gutmann", "Moore Group", uxd, yes, banned),
+  createData("Lee Block", "Sipes & Padberg", fed, yes, banned),
+  createData(
+    "Alison Kovacek Jr.",
+    "Bednar, Lindgren and Schmidt",
+    uud,
+    yes,
+    banned
+  ),
+  createData("Mr. Desiree Koelpin", "Medhurst-Ziemann", pm, yes, banned),
+  createData("Mrs. Carolyn Stiedemann", "Schuppe-Windler", pm, yes, banned),
+  createData("Mrs. Casey Hauck", "Kuvalis LLC", bd, yes, banned),
+  createData("Alma Bartoletti DDS", "Blick-Bernier", fsd, yes, active),
+  createData("Archie Bechtelar", "Greenfelder-Leuschke", uud, yes, active),
+  createData("Carol Price", "Spencer Group", uud, yes, banned),
+  createData("Dr. Ellen Gislason", "Dickinson-Aufderhar", bd, no, banned),
+  createData("Duane Beatty", "Blanda-Wiza", fsd, no, active),
+  createData("Dwight Cummings V", "Baumbach", uud, yes, banned),
+
+  createData("Lois Dach", "Schimmel-Swift", uxd, no, active),
+  createData("Louis O'Reilly II", "Walsh LLC", bd, no, banned),
+  createData("Merle Kshlerin", "Hickle, Ullrich and Mueller", uud, yes, banned),
+
+  createData("Nathaniel Abernathy", "Kuhn-Boehm", uxd, no, banned),
+  createData("Nellie Schimmel", "Haley, Paucek and Goodwin", fsd, yes, banned),
+  createData("Wilbert McClure", "Strosin-Wisoky", fsd, yes, banned),
+  createData("Nicole Johnson PhD", "Ward-Jacobi", fsd, no, banned),
+  createData("Van Dibbert DVM", "Bergnaum-Schowalter", fsd, no, active),
+  createData("Viola Muller I", "Simonis-Runolfsson", fed, yes, banned),
 ];

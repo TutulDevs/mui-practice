@@ -11,33 +11,23 @@ import { visuallyHidden } from "@mui/utils";
 const headCells = [
   {
     id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Name",
   },
   {
-    id: "calories",
-    numeric: true,
-    disablePadding: false,
-    label: "Calories",
+    id: "company",
+    label: "Company",
   },
   {
-    id: "fat",
-    numeric: true,
-    disablePadding: false,
-    label: "Fat (g)",
+    id: "role",
+    label: "Role",
   },
   {
-    id: "carbs",
-    numeric: true,
-    disablePadding: false,
-    label: "Carbs (g)",
+    id: "verified",
+    label: "Verified",
   },
   {
-    id: "protein",
-    numeric: true,
-    disablePadding: false,
-    label: "Protein (g)",
+    id: "status",
+    label: "Status",
   },
 ];
 
@@ -74,8 +64,6 @@ const UserTableHead = (props) => {
         {headCells.map((cell) => (
           <TableCell
             key={cell.id}
-            align={cell.numeric ? "right" : "left"}
-            padding={cell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === cell.id ? order : false}
           >
             <TableSortLabel

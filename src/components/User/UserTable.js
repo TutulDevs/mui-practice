@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { useState } from "react";
-import { rows } from "../../api/userApi";
+import { userData } from "../../api/userApi";
 import TableToolbar from "./TableToolbar";
 import UserTableHead from "./UserTableHead";
 
@@ -17,8 +17,20 @@ import UserTableHead from "./UserTableHead";
 const TableStyle = styled(Table)(({ theme }) => ({
   // border: "1px solid",
   minWidth: 500,
-
   overflowX: "auto",
+
+  // status style
+  "& .statusText": {
+    padding: "2px 4px",
+    borderRadius: theme.spacing(0.75),
+    color: theme.palette.common.white,
+  },
+  "& .activeText": {
+    backgroundColor: theme.palette.green.darker,
+  },
+  "& .bannedText": {
+    backgroundColor: theme.palette.error.light,
+  },
 }));
 
 ////////////////////////////////////////////////
@@ -68,7 +80,7 @@ const UserTable = () => {
   // click the ckbox on top & select all the rows
   const handleSelectAllClick = (e) => {
     if (e.target.checked) {
-      const newSelected = rows.map((n) => n.name);
+      const newSelected = userData.map((n) => n.name);
       setSelectedItems(newSelected);
       return;
     }
@@ -107,7 +119,18 @@ const UserTable = () => {
 
   // find if there's any empty rows || fill it up later
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userData.length) : 0;
+
+  // active/ banned
+  const StatusText = ({ text }) => {
+    if (text === "Active") {
+      return <span className="statusText activeText">{text}</span>;
+    } else if (text === "Banned") {
+      return <span className="statusText bannedText">{text}</span>;
+    } else {
+      return { text };
+    }
+  };
 
   return (
     <>
@@ -124,20 +147,20 @@ const UserTable = () => {
             orderBy={orderBy}
             onSelectAllClick={handleSelectAllClick}
             onRequestSort={handleRequestSort}
-            rowCount={rows.length}
+            rowCount={userData.length}
           />
 
           {/* Table Body */}
           <TableBody>
-            {sortableArr(rows, getComparator(order, orderBy))
+            {sortableArr(userData, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, idx) => {
-                const isItemSelected = selectedItems.indexOf(row.name) !== -1;
+              .map((user, idx) => {
+                const isItemSelected = selectedItems.indexOf(user.name) !== -1;
                 const labelId = `enhanced-table-checkbox-${idx}`;
 
                 return (
                   <TableRow
-                    key={row.name}
+                    key={user.name + idx}
                     hover
                     role="checkbox"
                     tabIndex={-1}
@@ -149,7 +172,7 @@ const UserTable = () => {
                         color="primary"
                         checked={isItemSelected}
                         inputProps={{ "aria-labelledby": labelId }}
-                        onChange={(e) => handleClick(e, row.name)}
+                        onChange={(e) => handleClick(e, user.name)}
                       />
                     </TableCell>
 
@@ -159,12 +182,14 @@ const UserTable = () => {
                       scope="row"
                       padding="none"
                     >
-                      {row.name}
+                      {user.name}
                     </TableCell>
-                    <TableCell align="right">{row.calories}</TableCell>
-                    <TableCell align="right">{row.fat}</TableCell>
-                    <TableCell align="right">{row.carbs}</TableCell>
-                    <TableCell align="right">{row.protein}</TableCell>
+                    <TableCell>{user.company}</TableCell>
+                    <TableCell>{user.role}</TableCell>
+                    <TableCell>{user.verified}</TableCell>
+                    <TableCell>
+                      <StatusText text={user.status} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -183,7 +208,7 @@ const UserTable = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={rows.length}
+        count={userData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
