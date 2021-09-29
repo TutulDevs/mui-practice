@@ -55,6 +55,8 @@ const UserTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  //console.log(selectedItems);
+
   //////     functions      ///////////////////////////////
   // you click on the row, it takes the name as property, check the prop & sort
   const handleRequestSort = (e, property) => {
@@ -81,11 +83,11 @@ const UserTable = () => {
     // if not in the arr, add
     if (selectedItemsIndex === -1)
       newSelected = newSelected.concat(selectedItems, name);
-    if (selectedItemsIndex === 0)
+    else if (selectedItemsIndex === 0)
       newSelected = newSelected.concat(selectedItems.slice(1));
-    if (selectedItemsIndex === selectedItems.length - 1)
+    else if (selectedItemsIndex === selectedItems.length - 1)
       newSelected = newSelected.concat(selectedItems.slice(0, -1));
-    if (selectedItemsIndex > 0)
+    else if (selectedItemsIndex > 0)
       newSelected = newSelected.concat(
         selectedItems.slice(0, selectedItemsIndex),
         selectedItems.slice(selectedItemsIndex + 1)
@@ -103,11 +105,9 @@ const UserTable = () => {
     setPage(0);
   };
 
-  // check if it's selected
-  const isSelected = (name) => selectedItems.indexOf(name) !== -1;
-
-  // find if there's any empty rows
-  //  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  // find if there's any empty rows || fill it up later
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <>
@@ -132,7 +132,7 @@ const UserTable = () => {
             {sortableArr(rows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, idx) => {
-                const isItemSelected = isSelected(row.name);
+                const isItemSelected = selectedItems.indexOf(row.name) !== -1;
                 const labelId = `enhanced-table-checkbox-${idx}`;
 
                 return (
@@ -149,7 +149,7 @@ const UserTable = () => {
                         color="primary"
                         checked={isItemSelected}
                         inputProps={{ "aria-labelledby": labelId }}
-                        onClick={(e) => handleClick(e, row.name)}
+                        onChange={(e) => handleClick(e, row.name)}
                       />
                     </TableCell>
 
@@ -170,6 +170,11 @@ const UserTable = () => {
               })}
 
             {/* empty rows can be added below */}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
           </TableBody>
         </TableStyle>
       </TableContainer>
