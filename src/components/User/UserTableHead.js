@@ -29,6 +29,10 @@ const headCells = [
     id: "status",
     label: "Status",
   },
+  {
+    id: "menu",
+    label: "",
+  },
 ];
 
 const UserTableHead = (props) => {

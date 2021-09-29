@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { userData } from "../../api/userApi";
 import {
   TableContainer,
   Table,
@@ -8,10 +10,9 @@ import {
   TablePagination,
 } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
-import { useState } from "react";
-import { userData } from "../../api/userApi";
 import TableToolbar from "./TableToolbar";
 import UserTableHead from "./UserTableHead";
+import UserMore from "./UserMore";
 
 // style
 const TableStyle = styled(Table)(({ theme }) => ({
@@ -30,6 +31,22 @@ const TableStyle = styled(Table)(({ theme }) => ({
   },
   "& .bannedText": {
     backgroundColor: theme.palette.error.light,
+  },
+
+  // selected tableRow desing
+  "& .MuiTableRow-root.Mui-selected": {
+    backgroundColor: theme.palette.green.lighter,
+  },
+
+  // checkbox style
+  "& .MuiCheckbox-root": {
+    color: theme.palette.text.disabled,
+  },
+  "& .Mui-checked": {
+    color: theme.palette.success.main,
+  },
+  "& .MuiIconButton-colorPrimary:hover": {
+    backgroundColor: theme.palette.green.lighter,
   },
 }));
 
@@ -189,6 +206,9 @@ const UserTable = () => {
                     <TableCell>{user.verified}</TableCell>
                     <TableCell>
                       <StatusText text={user.status} />
+                    </TableCell>
+                    <TableCell align="right">
+                      <UserMore />
                     </TableCell>
                   </TableRow>
                 );
