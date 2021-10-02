@@ -22,7 +22,7 @@ import {
   RiLoginCircleFill,
 } from "react-icons/ri";
 
-import { drawerWidth } from "./Layout";
+import { drawerWidth } from "./DashboardLayout";
 import CustomListItem from "../components/Drawer/CustomListItem";
 
 const NavDrawerStyle = styled("nav")(({ theme }) => ({

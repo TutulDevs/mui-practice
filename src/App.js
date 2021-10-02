@@ -1,5 +1,5 @@
 import { Redirect, Route, Switch } from "react-router-dom";
-import Layout from "./layout/Layout";
+import DashboardLayout from "./layout/DashboardLayout";
 import "./App.css";
 
 // components
@@ -14,7 +14,7 @@ import User from "./pages/User";
 const App = () => {
   return (
     <>
-      <Layout>
+      <DashboardLayout>
         <Switch>
           <Route path="/" exact>
             <Redirect to="/dashboard" />
@@ -30,7 +30,7 @@ const App = () => {
 
           <Route path="*" component={ErrorPage} />
         </Switch>
-      </Layout>
+      </DashboardLayout>
     </>
   );
 };

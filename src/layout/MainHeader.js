@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { AppBar, Box, IconButton, styled, Toolbar } from "@material-ui/core";
 
-import { drawerWidth } from "./Layout";
+import { drawerWidth } from "./DashboardLayout";
 
 // icons
 import { RiMenu3Line } from "react-icons/ri";
@@ -61,20 +61,21 @@ const MainHeader = (props) => {
   const handleCloseUserMenu = () => setShowUserMenu(null);
 
   return (
-    <AppBarStyle position='fixed'>
+    <AppBarStyle position="fixed">
       <ToolbarStyle>
         {/* Left side's items */}
         <ContainerStyle>
           <ToggleButtonStyle
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={props.onClick}>
-            <RiMenu3Line fontSize='small' />
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={props.onClick}
+          >
+            <RiMenu3Line fontSize="small" />
           </ToggleButtonStyle>
 
-          <IconButton aria-label='search'>
-            <BiSearch fontSize='small' />
+          <IconButton aria-label="search">
+            <BiSearch fontSize="small" />
           </IconButton>
         </ContainerStyle>
 

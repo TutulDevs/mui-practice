@@ -18,7 +18,7 @@ const MainStyle = styled("main")(({ theme }) => ({
   padding: theme.spacing(2.5),
 }));
 
-const Layout = (props) => {
+const DashboardLayout = (props) => {
   // window width
   const { window } = props;
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -55,6 +55,6 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default DashboardLayout;
 
 export const drawerWidth = 240;
