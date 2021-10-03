@@ -4,7 +4,6 @@ import { Box, styled, Toolbar } from "@material-ui/core";
 
 import MainHeader from "./MainHeader";
 import SideDrawer from "./SideDrawer";
-//import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
