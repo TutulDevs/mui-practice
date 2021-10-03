@@ -71,7 +71,7 @@ const MainHeader = (props) => {
             edge="start"
             onClick={props.onClick}
           >
-            <RiMenu3Line fontSize="small" />
+            <RiMenu3Line />
           </ToggleButtonStyle>
 
           <IconButton aria-label="search">
