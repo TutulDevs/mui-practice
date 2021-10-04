@@ -25,19 +25,22 @@ const App = () => {
       {/* Modal */}
       <IntroModal showModal={showModal} onToggle={toggleShowModal} />
 
-      {/* Dashboard */}
+      {/* Dashboard Layout */}
+
       <DashboardLayout>
         <Switch>
           <Route path="/" exact>
             <Redirect to="/dashboard" />
           </Route>
 
-          <Route path="/dashboard" component={Dashboard} exact />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/user" component={User} />
           <Route path="/product" component={Products} />
           <Route path="/blog" component={Blog} />
+
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+
           <Route path="/404" component={ErrorPage} />
 
           <Route path="*" component={ErrorPage} />
