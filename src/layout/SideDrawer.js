@@ -53,12 +53,11 @@ const UserCardStyle = styled(Link)(({ theme }) => ({
 
 const ListStyle = styled(List)(({ theme }) => ({
   marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(6),
 }));
 
 const GetMoreStyle = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.gray.light,
-  margin: "150px 12px 16px 12px",
+  backgroundColor: theme.palette.gray.lighter,
+  margin: "0px 12px 16px",
   padding: "60px 12px 14px 12px",
   borderRadius: theme.spacing(1.5),
   textAlign: "center",

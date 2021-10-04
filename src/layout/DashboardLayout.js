@@ -8,6 +8,8 @@ import SideDrawer from "./SideDrawer";
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
+    display: "grid",
+    gridTemplateRows: "auto auto 1fr auto",
   },
 }));
 
