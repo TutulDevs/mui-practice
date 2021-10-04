@@ -4,6 +4,16 @@
 
 I cloned [this dashboard](https://minimal-kit-react.vercel.app/dashboard/app) to practice my skills in Material UI with Reactjs. I learnt a lot from version 4 to 5. I used almost all the common components in this project.
 
+**Pages**
+
+1. Dashboard
+2. User
+3. Product
+4. Blog
+5. Login
+6. Register
+7. 404
+
 ## Styling
 
 For styling I mainly used `styled` function from `@material-ui/styles`.
