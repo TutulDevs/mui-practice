@@ -1,6 +1,7 @@
 import { Typography, Link, Container } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
+import { Helmet } from "react-helmet";
 import { Link as RouterLink } from "react-router-dom";
 import AuthButtonGroup from "../components/AuthPages/ButtonGroup";
 import FormLogin from "../components/AuthPages/FormLogin";
@@ -57,38 +58,45 @@ const RightPanelStyle = styled(Box)(({ theme }) => ({
 
 const Login = () => {
   return (
-    <ContainerBoxStyle container>
-      <LeftPanel
-        title="Hi, Welcome Back"
-        img={LoginPhoto}
-        imgAlt="Login Image"
-      />
+    <>
+      {/* Helmet */}
+      <Helmet>
+        <title>Login | MUI Dash</title>
+      </Helmet>
 
-      <RightPanelStyle>
-        <Typography paragraph className="account_switch">
-          Don't have an account?{" "}
-          <Link to="/register" component={RouterLink} underline="none">
-            Get started
-          </Link>
-        </Typography>
+      <ContainerBoxStyle container>
+        <LeftPanel
+          title="Hi, Welcome Back"
+          img={LoginPhoto}
+          imgAlt="Login Image"
+        />
 
-        <Container maxWidth="xs" className="form_Container">
-          <Typography variant="h4">Sign in to MUI Dash</Typography>
-          <Typography paragraph color="textSecondary">
-            Enter your details below.
+        <RightPanelStyle>
+          <Typography paragraph className="account_switch">
+            Don't have an account?{" "}
+            <Link to="/register" component={RouterLink} underline="none">
+              Get started
+            </Link>
           </Typography>
 
-          {/* Buttons */}
-          <AuthButtonGroup />
+          <Container maxWidth="xs" className="form_Container">
+            <Typography variant="h4">Sign in to MUI Dash</Typography>
+            <Typography paragraph color="textSecondary">
+              Enter your details below.
+            </Typography>
 
-          {/* Section Divider */}
-          <SectionDivider />
+            {/* Buttons */}
+            <AuthButtonGroup />
 
-          {/* The Actual Form 👇 */}
-          <FormLogin />
-        </Container>
-      </RightPanelStyle>
-    </ContainerBoxStyle>
+            {/* Section Divider */}
+            <SectionDivider />
+
+            {/* The Actual Form 👇 */}
+            <FormLogin />
+          </Container>
+        </RightPanelStyle>
+      </ContainerBoxStyle>
+    </>
   );
 };
 

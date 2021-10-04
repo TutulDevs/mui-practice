@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
+import { Helmet } from "react-helmet";
 import ChartCurrentSubject from "../components/Dashboard/ChartCurrentSubject";
 import ChartSiteVisits from "../components/Dashboard/ChartSiteVisits";
 import ConversionRate from "../components/Dashboard/ConversionRate";
@@ -19,6 +20,10 @@ const GridContainerStyle = styled(Grid)(({ theme }) => ({
 const Dashboard = () => {
   return (
     <>
+      <Helmet>
+        <title>Dashboard | MUI Dash</title>
+      </Helmet>
+
       <Typography variant="h6" component="h2">
         Hi, Welcome in MUI Dash.
       </Typography>

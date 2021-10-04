@@ -5,6 +5,7 @@ import { styled } from "@material-ui/styles";
 import BlogHeader from "../components/Blog/BlogHeader";
 import BlogFilters from "../components/Blog/BlogFilters";
 import Blogs from "../components/Blog/Blogs";
+import { Helmet } from "react-helmet";
 
 // style
 const ContainerStyle = styled(Container)(({ theme }) => ({
@@ -14,16 +15,23 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
 
 const Blog = () => {
   return (
-    <ContainerStyle maxWidth="lg">
-      {/* Header */}
-      <BlogHeader />
+    <>
+      {/* Helmet */}
+      <Helmet>
+        <title>Blogs | MUI Dash</title>
+      </Helmet>
 
-      {/* Blog Filters */}
-      <BlogFilters />
+      <ContainerStyle maxWidth="lg">
+        {/* Header */}
+        <BlogHeader />
 
-      {/* All blogs */}
-      <Blogs />
-    </ContainerStyle>
+        {/* Blog Filters */}
+        <BlogFilters />
+
+        {/* All blogs */}
+        <Blogs />
+      </ContainerStyle>
+    </>
   );
 };
 

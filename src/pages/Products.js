@@ -1,5 +1,6 @@
 import { Container, Typography } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
+import { Helmet } from "react-helmet";
 
 // components
 import FixedCartCounter from "../components/Product/FixedCartCount";
@@ -22,6 +23,11 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
 const Products = () => {
   return (
     <>
+      {/* Helmet */}
+      <Helmet>
+        <title>Products | MUI Dash</title>
+      </Helmet>
+
       {/* Fixed counter for cart */}
       <FixedCartCounter itemAmout="0" />
 

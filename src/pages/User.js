@@ -1,6 +1,7 @@
 import { Container, useMediaQuery } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
+import { Helmet } from "react-helmet";
 import UserHeader from "../components/User/UserHeader";
 import UserTable from "../components/User/UserTable";
 
@@ -22,28 +23,34 @@ const User = () => {
   const less768 = useMediaQuery("(max-width:768px)");
 
   return (
-    <Container maxWidth="lg" disableGutters>
-      {/* User Header */}
-      <UserHeader />
+    <>
+      <Helmet>
+        <title>Users | MUI Dash</title>
+      </Helmet>
 
-      {/* User Table */}
+      <Container maxWidth="lg" disableGutters>
+        {/* User Header */}
+        <UserHeader />
 
-      <BoxStyle
-        sx={{
-          width: less400
-            ? 300
-            : less480
-            ? 360
-            : less600
-            ? 540
-            : less768
-            ? 440
-            : "100%",
-        }}
-      >
-        <UserTable />
-      </BoxStyle>
-    </Container>
+        {/* User Table */}
+
+        <BoxStyle
+          sx={{
+            width: less400
+              ? 300
+              : less480
+              ? 360
+              : less600
+              ? 540
+              : less768
+              ? 440
+              : "100%",
+          }}
+        >
+          <UserTable />
+        </BoxStyle>
+      </Container>
+    </>
   );
 };
 

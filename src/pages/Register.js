@@ -1,6 +1,7 @@
 import { Typography, Link, Container } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Box } from "@mui/system";
+import { Helmet } from "react-helmet";
 import { Link as RouterLink } from "react-router-dom";
 import AuthButtonGroup from "../components/AuthPages/ButtonGroup";
 import FormRegister from "../components/AuthPages/FormRegister";
@@ -73,61 +74,68 @@ const Register = () => {
   const preventDefault = (e) => e.preventDefault();
 
   return (
-    <ContainerBoxStyle container>
-      <LeftPanel
-        title="Manage the job more effectively with Minimal"
-        img={RegisterPhoto}
-        imgAlt="Register Image"
-      />
+    <>
+      {/* Helmet */}
+      <Helmet>
+        <title>Register | MUI Dash</title>
+      </Helmet>
 
-      <RightPanelStyle>
-        <Typography paragraph className="account_switch">
-          Already have an account?{" "}
-          <Link to="/login" component={RouterLink} underline="none">
-            Login
-          </Link>
-        </Typography>
+      <ContainerBoxStyle container>
+        <LeftPanel
+          title="Manage the job more effectively with Minimal"
+          img={RegisterPhoto}
+          imgAlt="Register Image"
+        />
 
-        <Container maxWidth="xs" className="form_Container">
-          <Typography variant="h4">Get started absolutely free.</Typography>
-          <Typography paragraph color="textSecondary">
-            Free forever. No credit card needed.
-          </Typography>
-
-          {/* Buttons */}
-          <AuthButtonGroup />
-
-          {/* Section Divider */}
-          <SectionDivider />
-
-          {/* The Actual Form 👇 */}
-          <FormRegister />
-
-          {/* Terms */}
-          <Typography paragraph color="textSecondary" className="terms">
-            By registering, I agree to MUI Dash{" "}
-            <Link
-              href="#"
-              onClick={preventDefault}
-              underline="always"
-              color="textPrimary"
-            >
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="#"
-              onClick={preventDefault}
-              underline="always"
-              color="textPrimary"
-            >
-              Privacy Policy
+        <RightPanelStyle>
+          <Typography paragraph className="account_switch">
+            Already have an account?{" "}
+            <Link to="/login" component={RouterLink} underline="none">
+              Login
             </Link>
-            .
           </Typography>
-        </Container>
-      </RightPanelStyle>
-    </ContainerBoxStyle>
+
+          <Container maxWidth="xs" className="form_Container">
+            <Typography variant="h4">Get started absolutely free.</Typography>
+            <Typography paragraph color="textSecondary">
+              Free forever. No credit card needed.
+            </Typography>
+
+            {/* Buttons */}
+            <AuthButtonGroup />
+
+            {/* Section Divider */}
+            <SectionDivider />
+
+            {/* The Actual Form 👇 */}
+            <FormRegister />
+
+            {/* Terms */}
+            <Typography paragraph color="textSecondary" className="terms">
+              By registering, I agree to MUI Dash{" "}
+              <Link
+                href="#"
+                onClick={preventDefault}
+                underline="always"
+                color="textPrimary"
+              >
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="#"
+                onClick={preventDefault}
+                underline="always"
+                color="textPrimary"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </Typography>
+          </Container>
+        </RightPanelStyle>
+      </ContainerBoxStyle>
+    </>
   );
 };
 

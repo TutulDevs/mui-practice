@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import { styled } from "@material-ui/styles";
 import { Link as RouterLink } from "react-router-dom";
 import image from "../images/404.svg";
+import { Helmet } from "react-helmet";
 
 // style
 const BoxStyle = styled(Box)(({ theme }) => ({
@@ -37,26 +38,33 @@ const BoxStyle = styled(Box)(({ theme }) => ({
 
 const ErrorPage = () => {
   return (
-    <BoxStyle>
-      <Typography variant="h3">Sorry, page not found!</Typography>
+    <>
+      {/* Helmet */}
+      <Helmet>
+        <title>404 | MUI Dash</title>
+      </Helmet>
 
-      <Typography paragraph color="textSecondary">
-        Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve
-        mistyped the URL? Be sure to check your spelling.
-      </Typography>
+      <BoxStyle>
+        <Typography variant="h3">Sorry, page not found!</Typography>
 
-      <img src={image} alt="404 Error" loading="lazy" />
+        <Typography paragraph color="textSecondary">
+          Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve
+          mistyped the URL? Be sure to check your spelling.
+        </Typography>
 
-      <Button
-        to="/"
-        variant="contained"
-        component={RouterLink}
-        size="large"
-        disableElevation
-      >
-        Go to Home
-      </Button>
-    </BoxStyle>
+        <img src={image} alt="404 Error" loading="lazy" />
+
+        <Button
+          to="/"
+          variant="contained"
+          component={RouterLink}
+          size="large"
+          disableElevation
+        >
+          Go to Home
+        </Button>
+      </BoxStyle>
+    </>
   );
 };
 
