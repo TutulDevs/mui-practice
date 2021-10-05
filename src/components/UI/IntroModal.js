@@ -1,4 +1,4 @@
-import { Link, Modal, Typography } from "@material-ui/core";
+import { Button, Link, Modal, Typography } from "@material-ui/core";
 import { Box } from "@mui/system";
 
 const IntroModal = ({ showModal, onToggle }) => {
@@ -37,21 +37,45 @@ const IntroModal = ({ showModal, onToggle }) => {
         </Typography>
         <Typography paragraph>
           The main focus of this project was the UI. I know there are some bugs
-          in it. If you're a developer & want to help, please check the{" "}
-          <Link
-            href="https://github.com/TutulDevs/mui-practice"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            repo
-          </Link>
-          .
+          in it. If you can suggest me any way, I'll appreciate it very much.
         </Typography>
 
         <Typography paragraph>
           PS: I'm looking for an entry level job. If you've any opportunity,
           please knock me. 🙏
         </Typography>
+
+        {/* Buttons */}
+        <Box
+          sx={{
+            pt: 1,
+            display: "grid",
+            gap: 2,
+            gridAutoFlow: "column",
+            justifyContent: "end",
+          }}
+        >
+          <Button
+            component={Link}
+            underline="none"
+            variant="contained"
+            disableElevation
+            href="https://github.com/TutulDevs/mui-practice"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            view code
+          </Button>
+
+          <Button
+            variant="contained"
+            disableElevation
+            onClick={onToggle}
+            color="primary"
+          >
+            Close
+          </Button>
+        </Box>
       </Box>
     </Modal>
   );
