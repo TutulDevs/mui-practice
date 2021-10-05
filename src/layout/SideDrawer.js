@@ -57,7 +57,7 @@ const ListStyle = styled(List)(({ theme }) => ({
 
 const GetMoreStyle = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.gray.lighter,
-  margin: "0px 12px 16px",
+  margin: "40px 12px 16px",
   padding: "60px 12px 14px 12px",
   borderRadius: theme.spacing(1.5),
   textAlign: "center",
