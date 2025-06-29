@@ -40,10 +40,10 @@ const IntroModal = ({ showModal, onToggle }) => {
           in it. If you can suggest me any way, I'll appreciate it very much.
         </Typography>
 
-        <Typography paragraph>
+        {/* <Typography paragraph>
           PS: I'm looking for an entry level job. If you've any opportunity,
           please knock me. 🙏
-        </Typography>
+        </Typography> */}
 
         {/* Buttons */}
         <Box
